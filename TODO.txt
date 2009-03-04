@@ -1,0 +1,16 @@
+* list gigs
+- show edit links if admin
+
+* adding gig should allow pulldown
+
+* install geokit for addresses
+
+* make price $x.xx
+
+* restrict all pages to admin
+write password plugin (fun4paws)
+
+* venue pages
+- map
+- contact details
+- upcoming gigs?

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  venue_id: 1
+  artist_id: 1
+  date: 2009-03-04
+  price: 1.5
+  door_open: 2009-03-04 20:53:19
+  sold_out: false
+
+two:
+  venue_id: 1
+  artist_id: 1
+  date: 2009-03-04
+  price: 1.5
+  door_open: 2009-03-04 20:53:19
+  sold_out: false

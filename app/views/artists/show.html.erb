@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @artist.name %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @artist.country %>
+</p>
+
+<p>
+  <b>Web:</b>
+  <%=h @artist.web %>
+</p>
+
+<p>
+  <b>Mp3:</b>
+  <%=h @artist.mp3 %>
+</p>
+
+<p>
+  <b>Tor:</b>
+  <%=h @artist.tor %>
+</p>
+
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %>

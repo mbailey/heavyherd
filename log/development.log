@@ -1,0 +1,2050 @@
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAddresses (20090304095223)
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address_1" varchar(255), "address_2" varchar(255), "city" varchar(255), "state" varchar(255), "postcode" varchar(255), "lat" float, "lng" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (3.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090304095223')[0m
+Migrating to CreateVenues (20090304095307)
+  [4;36;1mSQL (2.8ms)[0m   [0;1mCREATE TABLE "venues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address_id" integer, "email" varchar(255), "web" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (2.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090304095307')[0m
+Migrating to CreateGigs (20090304095319)
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE "gigs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "venue_id" integer, "artist_id" integer, "date" date, "price" float, "door_open" time, "sold_out" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (3.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090304095319')[0m
+Migrating to CreateArtists (20090304095326)
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE "artists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "country" varchar(255), "web" varchar(255), "mp3" varchar(255), "tor" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (2.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090304095326')[0m
+Migrating to CreateTicketSellers (20090304095332)
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCREATE TABLE "ticket_sellers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address_id" integer, "phone" varchar(255), "web" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (2.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090304095332')[0m
+Migrating to CreateOfferings (20090304095405)
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE "offerings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_seller_id" integer, "gig_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (3.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090304095405')[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("addresses")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("artists")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("gigs")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("offerings")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("ticket_sellers")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("venues")[0m
+
+
+Processing VenuesController#index (for 127.0.0.1 at 2009-03-04 22:14:00) [GET]
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" [0m
+Rendering template within layouts/venues
+Rendering venues/index
+Completed in 29ms (View: 10, DB: 1) | 200 OK [http://localhost/venues]
+
+
+Processing VenuesController#new (for 127.0.0.1 at 2009-03-04 22:14:02) [GET]
+Rendering template within layouts/venues
+Rendering venues/new
+Completed in 41ms (View: 19, DB: 0) | 200 OK [http://localhost/venues/new]
+
+
+Processing VenuesController#create (for 127.0.0.1 at 2009-03-04 22:14:43) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "venue"=>{"name"=>"East Brunswick Club", "address_id"=>"", "web"=>"", "email"=>""}}
+  [4;35;1mVenue Create (0.6ms)[0m   [0mINSERT INTO "venues" ("name", "updated_at", "address_id", "web", "email", "created_at") VALUES('East Brunswick Club', '2009-03-04 11:14:43', NULL, '', '', '2009-03-04 11:14:43')[0m
+Redirected to #<Venue:0x343292c>
+Completed in 36ms (DB: 1) | 302 Found [http://localhost/venues]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:14:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 1) [0m
+Rendering template within layouts/venues
+Rendering venues/show
+Completed in 35ms (View: 11, DB: 1) | 200 OK [http://localhost/venues/1]
+
+
+Processing VenuesController#index (for 127.0.0.1 at 2009-03-04 22:14:45) [GET]
+  [4;35;1mVenue Load (1.0ms)[0m   [0mSELECT * FROM "venues" [0m
+Rendering template within layouts/venues
+Rendering venues/index
+Completed in 38ms (View: 18, DB: 1) | 200 OK [http://localhost/venues]
+
+
+Processing VenuesController#new (for 127.0.0.1 at 2009-03-04 22:14:47) [GET]
+Rendering template within layouts/venues
+Rendering venues/new
+Completed in 38ms (View: 17, DB: 0) | 200 OK [http://localhost/venues/new]
+
+
+Processing VenuesController#create (for 127.0.0.1 at 2009-03-04 22:15:13) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "venue"=>{"name"=>"Northcote Social Club", "address_id"=>"", "web"=>"", "email"=>""}}
+  [4;36;1mVenue Create (0.5ms)[0m   [0;1mINSERT INTO "venues" ("name", "updated_at", "address_id", "web", "email", "created_at") VALUES('Northcote Social Club', '2009-03-04 11:15:13', NULL, '', '', '2009-03-04 11:15:13')[0m
+Redirected to #<Venue:0x36be5b0>
+Completed in 38ms (DB: 0) | 302 Found [http://localhost/venues]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:15:13) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mVenue Load (0.6ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 2) [0m
+Rendering template within layouts/venues
+Rendering venues/show
+Completed in 35ms (View: 11, DB: 1) | 200 OK [http://localhost/venues/2]
+
+
+Processing VenuesController#index (for 127.0.0.1 at 2009-03-04 22:15:29) [GET]
+  [4;36;1mVenue Load (1.2ms)[0m   [0;1mSELECT * FROM "venues" [0m
+Rendering template within layouts/venues
+Rendering venues/index
+Completed in 40ms (View: 20, DB: 1) | 200 OK [http://localhost/venues]
+
+
+Processing VenuesController#new (for 127.0.0.1 at 2009-03-04 22:15:31) [GET]
+Rendering template within layouts/venues
+Rendering venues/new
+Completed in 40ms (View: 17, DB: 0) | 200 OK [http://localhost/venues/new]
+
+
+Processing VenuesController#create (for 127.0.0.1 at 2009-03-04 22:15:40) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "venue"=>{"name"=>"The Thornbury Theatre", "address_id"=>"", "web"=>"", "email"=>""}}
+  [4;35;1mVenue Create (0.6ms)[0m   [0mINSERT INTO "venues" ("name", "updated_at", "address_id", "web", "email", "created_at") VALUES('The Thornbury Theatre', '2009-03-04 11:15:40', NULL, '', '', '2009-03-04 11:15:40')[0m
+Redirected to #<Venue:0x33fdd08>
+Completed in 36ms (DB: 1) | 302 Found [http://localhost/venues]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:15:40) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 3) [0m
+Rendering template within layouts/venues
+Rendering venues/show
+Completed in 40ms (View: 12, DB: 1) | 200 OK [http://localhost/venues/3]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:16:57) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 3) [0m
+Rendering template within layouts/application
+Rendering venues/show
+Completed in 146ms (View: 11, DB: 1) | 200 OK [http://localhost/venues/3]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:17:48) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 3) [0m
+Rendering template within layouts/application
+Rendering venues/show
+Completed in 37ms (View: 13, DB: 1) | 200 OK [http://localhost/venues/3]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:17:58) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mVenue Load (0.6ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 3) [0m
+Rendering template within layouts/application
+Rendering venues/show
+Completed in 35ms (View: 12, DB: 1) | 200 OK [http://localhost/venues/3]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:18:00) [GET]
+  [4;36;1mGig Load (0.7ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+Completed in 29ms (View: 9, DB: 1) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:19:24) [GET]
+  [4;35;1mGig Load (0.5ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+Completed in 31ms (View: 11, DB: 1) | 200 OK [http://localhost/gigs]
+
+
+Processing TicketSellersController#index (for 127.0.0.1 at 2009-03-04 22:19:31) [GET]
+  [4;36;1mTicketSeller Load (0.5ms)[0m   [0;1mSELECT * FROM "ticket_sellers" [0m
+Rendering template within layouts/application
+Rendering ticket_sellers/index
+Completed in 29ms (View: 10, DB: 1) | 200 OK [http://localhost/ticket_sellers]
+
+
+Processing TicketSellersController#new (for 127.0.0.1 at 2009-03-04 22:19:34) [GET]
+Rendering template within layouts/application
+Rendering ticket_sellers/new
+Completed in 41ms (View: 19, DB: 0) | 200 OK [http://localhost/ticket_sellers/new]
+
+
+Processing TicketSellersController#create (for 127.0.0.1 at 2009-03-04 22:19:43) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "ticket_seller"=>{"name"=>"Polyester", "address_id"=>"", "phone"=>"", "web"=>"", "email"=>""}}
+  [4;35;1mTicketSeller Create (0.4ms)[0m   [0mINSERT INTO "ticket_sellers" ("name", "updated_at", "address_id", "phone", "web", "email", "created_at") VALUES('Polyester', '2009-03-04 11:19:43', NULL, '', '', '', '2009-03-04 11:19:43')[0m
+Redirected to #<TicketSeller:0x335471c>
+Completed in 36ms (DB: 0) | 302 Found [http://localhost/ticket_sellers]
+
+
+Processing TicketSellersController#show (for 127.0.0.1 at 2009-03-04 22:19:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTicketSeller Load (0.7ms)[0m   [0;1mSELECT * FROM "ticket_sellers" WHERE ("ticket_sellers"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering ticket_sellers/show
+Completed in 41ms (View: 14, DB: 1) | 200 OK [http://localhost/ticket_sellers/1]
+
+
+Processing VenuesController#index (for 127.0.0.1 at 2009-03-04 22:19:45) [GET]
+  [4;35;1mVenue Load (1.5ms)[0m   [0mSELECT * FROM "venues" [0m
+Rendering template within layouts/application
+Rendering venues/index
+Completed in 45ms (View: 23, DB: 2) | 200 OK [http://localhost/venues]
+
+
+Processing ArtistsController#index (for 127.0.0.1 at 2009-03-04 22:19:47) [GET]
+  [4;36;1mArtist Load (0.6ms)[0m   [0;1mSELECT * FROM "artists" [0m
+Rendering template within layouts/application
+Rendering artists/index
+Completed in 30ms (View: 10, DB: 1) | 200 OK [http://localhost/artists]
+
+
+Processing ArtistsController#new (for 127.0.0.1 at 2009-03-04 22:19:55) [GET]
+Rendering template within layouts/application
+Rendering artists/new
+Completed in 42ms (View: 19, DB: 0) | 200 OK [http://localhost/artists/new]
+
+
+Processing ArtistsController#create (for 127.0.0.1 at 2009-03-04 22:23:13) [POST]
+  Parameters: {"artist"=>{"name"=>"The Drones", "tor"=>"http://www.mininova.org/tor/1830082", "country"=>"Australia", "mp3"=>"http://thefourohfive.com/wp-content/uploads/2009/02/02-the-minotaur.mp3", "web"=>"http://www.thedrones.com.au/"}, "commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68"}
+  [4;35;1mArtist Create (0.5ms)[0m   [0mINSERT INTO "artists" ("name", "tor", "updated_at", "country", "mp3", "web", "created_at") VALUES('The Drones', 'http://www.mininova.org/tor/1830082', '2009-03-04 11:23:13', 'Australia', 'http://thefourohfive.com/wp-content/uploads/2009/02/02-the-minotaur.mp3', 'http://www.thedrones.com.au/', '2009-03-04 11:23:13')[0m
+Redirected to #<Artist:0x34c0dbc>
+Completed in 38ms (DB: 0) | 302 Found [http://localhost/artists]
+
+
+Processing ArtistsController#show (for 127.0.0.1 at 2009-03-04 22:23:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering artists/show
+Completed in 38ms (View: 13, DB: 1) | 200 OK [http://localhost/artists/1]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:24:13) [GET]
+  [4;35;1mGig Load (0.5ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+Completed in 31ms (View: 10, DB: 1) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#new (for 127.0.0.1 at 2009-03-04 22:24:15) [GET]
+Rendering template within layouts/application
+Rendering gigs/new
+Completed in 382ms (View: 357, DB: 0) | 200 OK [http://localhost/gigs/new]
+
+
+Processing VenuesController#index (for 127.0.0.1 at 2009-03-04 22:24:20) [GET]
+  [4;36;1mVenue Load (1.5ms)[0m   [0;1mSELECT * FROM "venues" [0m
+Rendering template within layouts/application
+Rendering venues/index
+Completed in 47ms (View: 26, DB: 2) | 200 OK [http://localhost/venues]
+
+
+Processing VenuesController#new (for 127.0.0.1 at 2009-03-04 22:24:26) [GET]
+Rendering template within layouts/application
+Rendering venues/new
+Completed in 40ms (View: 17, DB: 0) | 200 OK [http://localhost/venues/new]
+
+
+Processing VenuesController#create (for 127.0.0.1 at 2009-03-04 22:25:42) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "venue"=>{"name"=>"Corner Hotel", "address_id"=>"57 Swan St Richmond", "web"=>"http://www.cornerhotel.com/", "email"=>"info@cornerhotel.com"}}
+  [4;35;1mVenue Create (0.5ms)[0m   [0mINSERT INTO "venues" ("name", "updated_at", "address_id", "web", "email", "created_at") VALUES('Corner Hotel', '2009-03-04 11:25:42', 57, 'http://www.cornerhotel.com/', 'info@cornerhotel.com', '2009-03-04 11:25:42')[0m
+Redirected to #<Venue:0x353ad24>
+Completed in 37ms (DB: 0) | 302 Found [http://localhost/venues]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:25:42) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Rendering template within layouts/application
+Rendering venues/show
+Completed in 39ms (View: 13, DB: 1) | 200 OK [http://localhost/venues/4]
+
+
+Processing ArtistsController#index (for 127.0.0.1 at 2009-03-04 22:25:49) [GET]
+  [4;35;1mArtist Load (1.0ms)[0m   [0mSELECT * FROM "artists" [0m
+Rendering template within layouts/application
+Rendering artists/index
+Completed in 41ms (View: 20, DB: 1) | 200 OK [http://localhost/artists]
+
+
+Processing ArtistsController#show (for 127.0.0.1 at 2009-03-04 22:25:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering artists/show
+Completed in 38ms (View: 14, DB: 1) | 200 OK [http://localhost/artists/1]
+
+
+Processing GigsController#create (for 127.0.0.1 at 2009-03-04 22:27:17) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "gig"=>{"date(1i)"=>"2009", "artist_id"=>"1", "price"=>"25", "date(2i)"=>"4", "sold_out"=>"0", "date(3i)"=>"23", "door_open(1i)"=>"2009", "venue_id"=>"4", "door_open(2i)"=>"4", "door_open(3i)"=>"23", "door_open(4i)"=>"20", "door_open(5i)"=>"30"}}
+  [4;35;1mGig Create (0.5ms)[0m   [0mINSERT INTO "gigs" ("artist_id", "updated_at", "price", "date", "sold_out", "venue_id", "door_open", "created_at") VALUES(1, '2009-03-04 11:27:17', 25.0, '2009-04-23', 'f', 4, '2009-04-23 20:30:00', '2009-03-04 11:27:17')[0m
+Redirected to #<Gig:0x32d33b0>
+Completed in 158ms (DB: 1) | 302 Found [http://localhost/gigs]
+
+
+Processing GigsController#show (for 127.0.0.1 at 2009-03-04 22:27:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGig Load (0.8ms)[0m   [0;1mSELECT * FROM "gigs" WHERE ("gigs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering gigs/show
+Completed in 41ms (View: 16, DB: 1) | 200 OK [http://localhost/gigs/1]
+
+
+Processing GigsController#show (for 127.0.0.1 at 2009-03-04 22:28:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGig Load (0.7ms)[0m   [0mSELECT * FROM "gigs" WHERE ("gigs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering gigs/show
+Completed in 42ms (View: 16, DB: 1) | 200 OK [http://localhost/gigs/1]
+
+
+Processing GigsController#show (for 127.0.0.1 at 2009-03-04 22:28:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGig Load (0.7ms)[0m   [0;1mSELECT * FROM "gigs" WHERE ("gigs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering gigs/show
+Completed in 41ms (View: 15, DB: 1) | 200 OK [http://localhost/gigs/1]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" LIMIT 1[0m
+  [4;35;1mGig Load (0.9ms)[0m   [0mSELECT * FROM "gigs" LIMIT 1[0m
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mGig Load (1.2ms)[0m   [0mSELECT * FROM "gigs" LIMIT 1[0m
+  [4;36;1mArtist Load (0.9ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mGig Load (1.3ms)[0m   [0mSELECT * FROM "gigs" LIMIT 1[0m
+  [4;36;1mGig Load (1.2ms)[0m   [0;1mSELECT * FROM "gigs" LIMIT 1[0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:33:43) [GET]
+  [4;35;1mGig Load (1.3ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+Completed in 46ms (View: 23, DB: 1) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:37:39) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+ERROR: compiling _run_erb_app47views47gigs47index46html46erb RAISED compile error
+/Users/mbailey/work/giglist/app/views/gigs/index.html.erb:14: syntax error, unexpected tIDENTIFIER, expecting ')'
+@output_buffer.concat "\t\t"; @output_buffer.concat(( "<span class="sold_out">sold out</span>" if gig.sold_out ).to_s); @output_buffer.concat "\n"
+                                                                            ^
+Function body:           def _run_erb_app47views47gigs47index46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>Listing gigs</h1>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<table>\n"
+ current_date = nil ; @output_buffer.concat "\n"
+ for gig in @gigs ; @output_buffer.concat "\n"
+@output_buffer.concat "  ";  if gig.date != current_date ; @output_buffer.concat "\n"
+@output_buffer.concat "  <tr><td>"; @output_buffer.concat(( gig.date ).to_s); @output_buffer.concat "</td></tr>\n"
+@output_buffer.concat "  ";  end ; @output_buffer.concat "\n"
+@output_buffer.concat "  <tr>\n"
+@output_buffer.concat "    <td>\n"
+@output_buffer.concat "\t\t"; @output_buffer.concat((h gig.artist.name ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\t\t"; @output_buffer.concat((h gig.price ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\t\t"; @output_buffer.concat((h gig.door_open ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\t\t"; @output_buffer.concat(( "<span class="sold_out">sold out</span>" if gig.sold_out ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "    </td>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "  </tr>\n"
+ end ; @output_buffer.concat "\n"
+@output_buffer.concat "</table>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<br />\n"
+@output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/mbailey/work/giglist/app/views/gigs/index.html.erb:25:in `compile!'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:66:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:26:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/mbailey/work/giglist/app/controllers/gigs_controller.rb:7:in `index'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+./script/server:3
+
+
+ActionView::TemplateError (compile error
+/Users/mbailey/work/giglist/app/views/gigs/index.html.erb:14: syntax error, unexpected tIDENTIFIER, expecting ')'
+@output_buffer.concat "\t\t"; @output_buffer.concat(( "<span class="sold_out">sold out</span>" if gig.sold_out ).to_s); @output_buffer.concat "\n"
+                                                                            ^) on line #14 of app/views/gigs/index.html.erb:
+11: 		<%=h gig.artist.name %>
+12: 		<%=h gig.price %>
+13: 		<%=h gig.door_open %>
+14: 		<%= "<span class="sold_out">sold out</span>" if gig.sold_out %>
+15:     </td>
+16: 
+17:   </tr>
+
+    app/views/gigs/index.html.erb:25:in `compile!'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:66:in `compile'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `compile'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:26:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/gigs_controller.rb:7:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (214.6ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (2.4ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:38:00) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 58ms (View: 36, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:38:53) [GET]
+  [4;35;1mGig Load (1.2ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 60ms (View: 37, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:39:52) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 59ms (View: 36, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:40:13) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 170ms (View: 147, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:40:47) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 60ms (View: 38, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:40:53) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 60ms (View: 38, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:44:39) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+
+
+ActionView::TemplateError (can't convert nil into Float) on line #12 of app/views/gigs/index.html.erb:
+9:   <tr>
+10:     <td>
+11: 		<%=h gig.artist.name %>
+12: 		<%=h gig.price %>
+13: 		Doors <%=h gig.door_open.strftime('%I:%M %p') %>
+14: 		<%= '<span class="sold_out">sold out</span>' if gig.sold_out %>
+15:     </td>
+
+    app/models/gig.rb:6:in `sprintf'
+    app/models/gig.rb:6:in `price'
+    app/views/gigs/index.html.erb:12
+    app/views/gigs/index.html.erb:5:in `each'
+    app/views/gigs/index.html.erb:5
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/gigs_controller.rb:7:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (216.1ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.4ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:44:54) [GET]
+  [4;35;1mGig Load (1.2ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+
+
+ActionView::TemplateError (stack level too deep) on line #12 of app/views/gigs/index.html.erb:
+9:   <tr>
+10:     <td>
+11: 		<%=h gig.artist.name %>
+12: 		<%=h gig.price %>
+13: 		Doors <%=h gig.door_open.strftime('%I:%M %p') %>
+14: 		<%= '<span class="sold_out">sold out</span>' if gig.sold_out %>
+15:     </td>
+
+    app/models/gig.rb:6:in `price'
+    app/models/gig.rb:6:in `price'
+    app/views/gigs/index.html.erb:12
+    app/views/gigs/index.html.erb:5:in `each'
+    app/views/gigs/index.html.erb:5
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/gigs_controller.rb:7:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (99.4ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (117.1ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:45:50) [GET]
+
+
+SyntaxError (/Users/mbailey/work/giglist/app/models/gig.rb:5: syntax error, unexpected ','
+  alias _price, price
+               ^):
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:381:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:256:in `require_or_load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:427:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:77:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:89:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:439:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:93:in `const_missing'
+    /app/controllers/gigs_controller.rb:5:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (85.1ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.4ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:45:58) [GET]
+
+
+SyntaxError (/Users/mbailey/work/giglist/app/models/gig.rb:5: syntax error, unexpected ','
+  alias price, _price
+              ^):
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:381:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:256:in `require_or_load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:427:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:77:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:89:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:439:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:93:in `const_missing'
+    /app/controllers/gigs_controller.rb:5:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (84.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.3ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:46:04) [GET]
+
+
+NameError (undefined method `_price' for class `Gig'):
+    /app/models/gig.rb:5
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:381:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:256:in `require_or_load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:427:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:77:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:89:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:95:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:95:in `const_missing'
+    /app/controllers/gigs_controller.rb:5:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (85.9ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.4ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:46:21) [GET]
+
+
+NameError (undefined method `price' for class `Gig'):
+    /app/models/gig.rb:5
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:381:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:256:in `require_or_load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:427:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:77:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:89:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:95:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:95:in `const_missing'
+    /app/controllers/gigs_controller.rb:5:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (85.3ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.4ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:48:08) [GET]
+
+
+NameError (undefined method `price' for class `Gig'):
+    /app/models/gig.rb:5
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:381:in `load_file'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:256:in `require_or_load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:427:in `load_missing_constant'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:77:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:89:in `const_missing'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:95:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:95:in `const_missing'
+    /app/controllers/gigs_controller.rb:5:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (196.5ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.3ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:48:14) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 60ms (View: 38, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:48:23) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.8ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.+) on line #12 of app/views/gigs/index.html.erb:
+9:   <tr>
+10:     <td>
+11: 		<%=h gig.artist.name %>
+12: 		<%=h gig.price %>
+13: 		Doors <%=h gig.door_open.strftime('%I:%M %p') %>
+14: 		<%= '<span class="sold_out">sold out</span>' if gig.sold_out %>
+15:     </td>
+
+    app/models/gig.rb:8:in `price'
+    app/views/gigs/index.html.erb:12
+    app/views/gigs/index.html.erb:5:in `each'
+    app/views/gigs/index.html.erb:5
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/gigs_controller.rb:7:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (217.6ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.3ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:48:36) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.+) on line #12 of app/views/gigs/index.html.erb:
+9:   <tr>
+10:     <td>
+11: 		<%=h gig.artist.name %>
+12: 		<%=h gig.price %>
+13: 		Doors <%=h gig.door_open.strftime('%I:%M %p') %>
+14: 		<%= '<span class="sold_out">sold out</span>' if gig.sold_out %>
+15:     </td>
+
+    app/models/gig.rb:9:in `price'
+    app/views/gigs/index.html.erb:12
+    app/views/gigs/index.html.erb:5:in `each'
+    app/views/gigs/index.html.erb:5
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/gigs_controller.rb:7:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (215.6ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.5ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:48:52) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 59ms (View: 37, DB: 2) | 200 OK [http://localhost/gigs]
+  [4;36;1mGig Load (1.0ms)[0m   [0;1mSELECT * FROM "gigs" LIMIT 1[0m
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:49:46) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 59ms (View: 37, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:54:24) [GET]
+  [4;35;1mGig Load (1.2ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.8ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.artist) on line #15 of app/views/gigs/index.html.erb:
+12: 		<%=h gig.price %>
+13: 		Doors <%=h gig.door_open.strftime('%I:%M %p') %>
+14: 		<%= '<span class="sold_out">sold out</span>' if gig.sold_out %>
+15: 		<%= link_to image_tag('/images/icon-playstop.gif'), @gig.artist.mp3 %>
+16:     </td>
+17: 
+18:   </tr>
+
+    app/views/gigs/index.html.erb:15
+    app/views/gigs/index.html.erb:5:in `each'
+    app/views/gigs/index.html.erb:5
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/gigs_controller.rb:7:in `index'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/local/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (219.0ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.4ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:54:34) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 61ms (View: 38, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:55:16) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 59ms (View: 37, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:56:03) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Completed in 60ms (View: 37, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:56:45) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 198ms (View: 175, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:56:48) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Rendering template within layouts/application
+Rendering venues/show
+Completed in 39ms (View: 13, DB: 1) | 200 OK [http://localhost/venues/4]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:57:10) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 87ms (View: 63, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing ArtistsController#show (for 127.0.0.1 at 2009-03-04 22:57:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering artists/show
+Completed in 40ms (View: 14, DB: 1) | 200 OK [http://localhost/artists/1]
+
+
+Processing VenuesController#show (for 127.0.0.1 at 2009-03-04 22:57:15) [GET]
+  Parameters: {"id"=>"4"}
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Rendering template within layouts/application
+Rendering venues/show
+Completed in 39ms (View: 13, DB: 1) | 200 OK [http://localhost/venues/4]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:57:17) [GET]
+  [4;36;1mGig Load (1.2ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 85ms (View: 62, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:59:39) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 194ms (View: 171, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 22:59:58) [GET]
+  [4;36;1mGig Load (1.2ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.9ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:00:12) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:01:50) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.9ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 95ms (View: 71, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#show (for 127.0.0.1 at 2009-03-04 23:02:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGig Load (0.7ms)[0m   [0mSELECT * FROM "gigs" WHERE ("gigs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering gigs/show
+Completed in 174ms (View: 149, DB: 1) | 200 OK [http://localhost/gigs/1]
+
+
+Processing ArtistsController#index (for 127.0.0.1 at 2009-03-04 23:02:21) [GET]
+  [4;36;1mArtist Load (1.0ms)[0m   [0;1mSELECT * FROM "artists" [0m
+Rendering template within layouts/application
+Rendering artists/index
+Completed in 41ms (View: 20, DB: 1) | 200 OK [http://localhost/artists]
+
+
+Processing ArtistsController#edit (for 127.0.0.1 at 2009-03-04 23:02:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering artists/edit
+Completed in 49ms (View: 23, DB: 1) | 200 OK [http://localhost/artists/1/edit]
+
+
+Processing ArtistsController#update (for 127.0.0.1 at 2009-03-04 23:02:30) [PUT]
+  Parameters: {"artist"=>{"name"=>"The Drones", "tor"=>"http://www.mininova.org/get/1830082", "country"=>"Australia", "mp3"=>"http://thefourohfive.com/wp-content/uploads/2009/02/02-the-minotaur.mp3", "web"=>"http://www.thedrones.com.au/"}, "commit"=>"Update", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "id"=>"1"}
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mArtist Update (0.5ms)[0m   [0mUPDATE "artists" SET "tor" = 'http://www.mininova.org/get/1830082', "updated_at" = '2009-03-04 12:02:30' WHERE "id" = 1[0m
+Redirected to #<Artist:0x36798c0>
+Completed in 41ms (DB: 1) | 302 Found [http://localhost/artists/1]
+
+
+Processing ArtistsController#show (for 127.0.0.1 at 2009-03-04 23:02:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering artists/show
+Completed in 41ms (View: 15, DB: 1) | 200 OK [http://localhost/artists/1]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:02:40) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.8ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 86ms (View: 63, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:05:19) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.9ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:06:43) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 195ms (View: 172, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:06:45) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 61, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:07:38) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 85ms (View: 61, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:07:54) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.9ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 62, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:08:26) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 60, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:09:25) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.8ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 86ms (View: 62, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:09:42) [GET]
+  [4;35;1mGig Load (1.3ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 86ms (View: 62, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:09:52) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 60, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:10:18) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:11:42) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.8ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:12:29) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 78ms (View: 55, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:12:49) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 84ms (View: 61, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:13:10) [GET]
+  [4;35;1mGig Load (1.0ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.6ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:13:48) [GET]
+  [4;36;1mGig Load (1.2ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.8ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.9ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 86ms (View: 62, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:14:13) [GET]
+  [4;35;1mGig Load (1.5ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.8ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 193ms (View: 61, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:14:45) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 85ms (View: 62, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:14:54) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.8ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:14:59) [GET]
+  [4;36;1mGig Load (1.2ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:15:07) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 61, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:16:56) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 85ms (View: 62, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:18:09) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.8ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.6ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:18:23) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.9ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.6ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 83ms (View: 60, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:19:34) [GET]
+  [4;35;1mGig Load (1.2ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.6ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 88ms (View: 63, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:20:07) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 194ms (View: 171, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing ArtistsController#index (for 127.0.0.1 at 2009-03-04 23:20:56) [GET]
+  [4;35;1mArtist Load (1.1ms)[0m   [0mSELECT * FROM "artists" [0m
+Rendering template within layouts/application
+Rendering artists/index
+Completed in 47ms (View: 24, DB: 1) | 200 OK [http://localhost/artists]
+
+
+Processing ArtistsController#new (for 127.0.0.1 at 2009-03-04 23:20:57) [GET]
+Rendering template within layouts/application
+Rendering artists/new
+Completed in 44ms (View: 20, DB: 0) | 200 OK [http://localhost/artists/new]
+
+
+Processing ArtistsController#create (for 127.0.0.1 at 2009-03-04 23:24:32) [POST]
+  Parameters: {"artist"=>{"name"=>"Elbow", "tor"=>"http://www.mininova.org/get/1313796", "country"=>"U.K.", "mp3"=>"http://earbuds.popdose.com/david/Mope%20Like%20Me/Elbow%20-%20Powder%20Blue.mp3", "web"=>"http://www.elbow.co.uk/"}, "commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68"}
+  [4;36;1mArtist Create (0.5ms)[0m   [0;1mINSERT INTO "artists" ("name", "tor", "updated_at", "country", "mp3", "web", "created_at") VALUES('Elbow', 'http://www.mininova.org/get/1313796', '2009-03-04 12:24:32', 'U.K.', 'http://earbuds.popdose.com/david/Mope%20Like%20Me/Elbow%20-%20Powder%20Blue.mp3', 'http://www.elbow.co.uk/', '2009-03-04 12:24:32')[0m
+Redirected to #<Artist:0x3511320>
+Completed in 40ms (DB: 0) | 302 Found [http://localhost/artists]
+
+
+Processing ArtistsController#show (for 127.0.0.1 at 2009-03-04 23:24:32) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mArtist Load (0.9ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering artists/show
+Completed in 42ms (View: 16, DB: 1) | 200 OK [http://localhost/artists/2]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:24:35) [GET]
+  [4;36;1mGig Load (1.1ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.8ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 87ms (View: 64, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing ArtistsController#index (for 127.0.0.1 at 2009-03-04 23:24:37) [GET]
+  [4;35;1mArtist Load (1.4ms)[0m   [0mSELECT * FROM "artists" [0m
+Rendering template within layouts/application
+Rendering artists/index
+Completed in 49ms (View: 26, DB: 1) | 200 OK [http://localhost/artists]
+
+
+Processing ArtistsController#show (for 127.0.0.1 at 2009-03-04 23:24:40) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering artists/show
+Completed in 41ms (View: 14, DB: 1) | 200 OK [http://localhost/artists/2]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:24:44) [GET]
+  [4;35;1mGig Load (1.1ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 85ms (View: 62, DB: 2) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#new (for 127.0.0.1 at 2009-03-04 23:24:50) [GET]
+Rendering template within layouts/application
+Rendering gigs/new
+Completed in 63ms (View: 39, DB: 0) | 200 OK [http://localhost/gigs/new]
+
+
+Processing GigsController#create (for 127.0.0.1 at 2009-03-04 23:25:46) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"eb7c2ecf48e5da31d3f46d9b09557979585a3f68", "gig"=>{"date(1i)"=>"2009", "artist_id"=>"2", "price"=>"59.90", "date(2i)"=>"4", "sold_out"=>"0", "date(3i)"=>"2", "door_open(1i)"=>"2009", "venue_id"=>"4", "door_open(2i)"=>"4", "door_open(3i)"=>"2", "door_open(4i)"=>"20", "door_open(5i)"=>"00"}}
+  [4;36;1mGig Create (0.5ms)[0m   [0;1mINSERT INTO "gigs" ("artist_id", "updated_at", "price", "date", "sold_out", "venue_id", "door_open", "created_at") VALUES(2, '2009-03-04 12:25:46', 59.9, '2009-04-02', 'f', 4, '2009-04-02 20:00:00', '2009-03-04 12:25:46')[0m
+Redirected to #<Gig:0x33e418c>
+Completed in 44ms (DB: 0) | 302 Found [http://localhost/gigs]
+
+
+Processing GigsController#show (for 127.0.0.1 at 2009-03-04 23:25:46) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGig Load (0.8ms)[0m   [0mSELECT * FROM "gigs" WHERE ("gigs"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering gigs/show
+Completed in 44ms (View: 18, DB: 1) | 200 OK [http://localhost/gigs/2]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:25:48) [GET]
+  [4;36;1mGig Load (1.9ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.9ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.9ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+  [4;35;1mArtist Load (1.3ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 115ms (View: 85, DB: 5) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:27:18) [GET]
+  [4;35;1mGig Load (1.5ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 93ms (View: 69, DB: 4) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:28:17) [GET]
+  [4;36;1mGig Load (1.4ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.7ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+  [4;35;1mArtist Load (0.8ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 91ms (View: 66, DB: 4) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:28:42) [GET]
+  [4;35;1mGig Load (1.4ms)[0m   [0mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;35;1mVenue Load (0.7ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+  [4;36;1mArtist Load (0.7ms)[0m   [0;1mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 89ms (View: 64, DB: 3) | 200 OK [http://localhost/gigs]
+
+
+Processing GigsController#index (for 127.0.0.1 at 2009-03-04 23:28:56) [GET]
+  [4;36;1mGig Load (1.4ms)[0m   [0;1mSELECT * FROM "gigs" [0m
+Rendering template within layouts/application
+Rendering gigs/index
+  [4;35;1mArtist Load (0.7ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 1) [0m
+  [4;36;1mVenue Load (0.9ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+  [4;35;1mArtist Load (0.8ms)[0m   [0mSELECT * FROM "artists" WHERE ("artists"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "venues" WHERE ("venues"."id" = 4) [0m
+Completed in 214ms (View: 189, DB: 4) | 200 OK [http://localhost/gigs]
