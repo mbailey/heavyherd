@@ -14,3 +14,5 @@ write password plugin (fun4paws)
 - map
 - contact details
 - upcoming gigs?
+
+* create venues bootstrap
