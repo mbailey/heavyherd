@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+	<th></th>
     <th>Name</th>
     <th>Country</th>
     <th>Web</th>
@@ -11,6 +12,7 @@
 
 <% for artist in @artists %>
   <tr>
+	<td><%= image_tag(artist.cover_image, :width => 44) if artist.cover_image %></td>
     <td><%=h artist.name %></td>
     <td><%=h artist.country %></td>
     <td><%=h artist.web %></td>

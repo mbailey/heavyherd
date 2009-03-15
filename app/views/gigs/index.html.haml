@@ -1,0 +1,31 @@
+%table#main_content
+  - for gig in @gigs
+    %tr.gig_row
+      %td
+        %a{:href=>"javascript:player.sendEvent('LOAD', '#{gig.artist.mp3}'); player.sendEvent('PLAY')"}=image_tag('/images/play.jpg', :border => 0)
+
+      %td
+        .datename= gig.date.strftime("%A")
+        .datenum= gig.date.strftime("%d.%m")
+      %td= image_tag(gig.artist.cover_image, :width => 44, :class => :cover) if gig.artist.cover_image
+      %td.artist= link_to h(gig.artist.name), gig.artist
+      %td= image_tag('/images/stars_4.gif', :border => 0) 
+
+      %td.venue= link_to h(gig.venue.name), gig.venue
+
+      %td= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor 
+
+
+
+/%script{:type => "text/javascript", :src=>"http://mediaplayer.yahoo.com/js"
+
+#player
+  %a#playerPrev{:onclick=>"prevTrack();return false;", :href=>"#"}
+    Prev
+    %span
+  = player({:file => 'http://fakepennycomics.com/blog/SOSB_HalfAsleep.mp3', :lightcolor => "84C441", :skin => :stylish_slim}, {:width => 257, :height => 32, :player_id => 'herd_player'})
+  %a#playerNext{:onclick=>"nextTrack();return false;", :href=>"#"} 
+    Next
+    %span 
+
+	

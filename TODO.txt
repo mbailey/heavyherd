@@ -1,6 +1,8 @@
 * list gigs
 - show edit links if admin
 
+* autograb album covers
+
 * adding gig should allow pulldown
 
 * install geokit for addresses

@@ -7,15 +7,18 @@
   <title>Venues: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'player' %>
+  <%= javascript_include_tag 'swfobject' %>
 </head>
 <body>
-
+<div id="header">
+  <%= image_tag '/images/header_logo.jpg', :style => 'margin-right: 60px;' %>
+  <%= image_tag '/images/header_menu.jpg', :style => 'margin-left: 60px;' %>
+</div>
 <p style="color: green"><%= flash[:notice] %></p>
+<%= navlinks unless current_page?(:controller => 'gigs', :action => 'index') %>
 
-<%= link_to_unless_current 'gigs', gigs_path %> |
-<%= link_to_unless_current 'artists', artists_path %> |
-<%= link_to_unless_current 'venues', venues_path %> |
-<%= link_to_unless_current 'ticket_sellers', ticket_sellers_path %><br/><br/>
+<br/><br/>
 
 <%= yield  %>
 

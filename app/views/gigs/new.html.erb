@@ -3,13 +3,16 @@
 <% form_for(@gig) do |f| %>
   <%= f.error_messages %>
 
+  <% @venues = Venue.find(:all, :order => "name" ) %>
   <p>
     <%= f.label :venue_id %><br />
-    <%= f.text_field :venue_id %>
+    <%= f.collection_select(:venue_id, @venues, :id, :name) %>
   </p>
+  <% @artists = Artist.find(:all, :order => "name" ) %>
   <p>
-    <%= f.label :artist_id %><br />
-    <%= f.text_field :artist_id %>
+	<%= f.label :artist_id %><br />
+    <%= f.collection_select(:artist_id, @artists, :id, :name) %> 
+	<%= link_to 'New artist', new_artist_path, :target => '_new' %>  
   </p>
   <p>
     <%= f.label :date %><br />
@@ -20,8 +23,8 @@
     <%= f.text_field :price %>
   </p>
   <p>
-    <%= f.label :door_open %><br />
-    <%= f.datetime_select :door_open %>
+    <%= f.label :door_open, 'Doors open' %><br />
+    <%= f.time_select :door_open %>
   </p>
   <p>
     <%= f.label :sold_out %><br />

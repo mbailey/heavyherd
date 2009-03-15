@@ -1,3 +1,4 @@
 .DS_Store
 config/deploy.rb
 log/*
+db/*.sqlite3

@@ -2,10 +2,10 @@ class GigsController < ApplicationController
   # GET /gigs
   # GET /gigs.xml
   def index
-    @gigs = Gig.find(:all)
+    @gigs = Gig.find(:all, :order => 'date')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.xml  { render :xml => @gigs }
     end
   end
