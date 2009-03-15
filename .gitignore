@@ -2,3 +2,4 @@
 config/deploy.rb
 log/*
 db/*.sqlite3
+config/passenger
