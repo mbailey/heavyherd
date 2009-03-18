@@ -7,7 +7,7 @@
       %td
         .datename= gig.date.strftime("%A")
         .datenum= gig.date.strftime("%d.%m")
-      %td= image_tag(gig.artist.cover_image, :width => 44, :class => :cover) if gig.artist.cover_image
+      %td= image_tag(gig.artist.cover_image, :width => 44, :class => :cover) unless gig.artist.cover_image.blank?
       %td.artist= link_to h(gig.artist.name), gig.artist
       %td= image_tag('/images/stars_4.gif', :border => 0) 
 
