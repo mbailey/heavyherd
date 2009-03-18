@@ -9,7 +9,7 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: heavyheard_development
+  database: heavyherd_development
   pool: 5
   username: root
   password:
