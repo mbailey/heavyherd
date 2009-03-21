@@ -1,0 +1,618 @@
+/*
+----------------------------------------------------
+	Heavy Heard Layout
+	CSS & XHTML Markup : Eiran Cooper
+	Graphic design : Brad Smith
+	Ruby programming : Mike Bailey
+----------------------------------------------------
+*/
+
+/*	Global styles	*/
+
+body 
+{
+	margin : 0;
+	padding : 0;
+	background : #fff;
+	font-family : georgia, serif;
+	letter-spacing : -0.01em;
+}
+
+a
+{
+	outline : none;
+	border : none;
+	color : #949494;
+}
+
+img
+{
+	border : none;
+}
+
+.clearfix
+{
+	clear : both;
+}
+
+
+/*
+------------------------------
+	Layout element styles
+------------------------------
+*/
+
+#page
+{
+	width : 960px;
+	height : auto;
+	margin : 0 auto 0 auto;
+}
+
+#header
+{
+	width : auto;
+	height : 180px;
+}
+
+/*
+------------------------------
+	Header styles
+------------------------------
+*/
+
+h1
+{
+	font-size : 80px;
+	font-weight : normal;
+	color : #3dc0f0;
+	letter-spacing : -3px;
+	margin : 35px 0 0 50px;
+	padding : 0;
+	float : left;
+}
+
+h1#header_title
+{
+	width : 376px;
+	height : 80px;
+	background : url(../images/header_title.gif) no-repeat;
+	margin-top : 48px;
+	text-indent : -4000px;
+	overflow : hidden;
+}
+
+a.login
+{
+	width : 9px;
+	height : 10px;
+	display : block;
+	background : url(../images/icon_login.gif) no-repeat;
+	float : left;
+	position : relative;
+	top : 47px;
+	margin : 0 2px 0 2px;
+}
+
+h2
+{
+	font-size : 18px;
+	font-weight : normal;
+	color : #949494;
+	letter-spacing : -0.06em;
+	float : left;
+	width : 195px;
+	margin-top : 70px;
+}
+
+#header_nav
+{
+	width : 150px;
+	height : auto;
+	float : right;
+	position : relative;
+	top : 45px;
+	right : 70px;
+}
+	
+	#nav_wrap
+	{
+		font-size : 24px;
+	}
+	
+		#nav_wrap a.nav_gigs
+		{
+			color : #c9c9c9;
+			float : left;
+		}
+		
+		#nav_wrap .nav_spacer
+		{
+			color : #c9c9c9;
+			float : left;
+			margin : 0 3px 0 3px;
+		}
+		
+		#nav_wrap a.nav_artists
+		{
+			color : #e94637;
+			float : left;
+			text-decoration : none;
+		}
+	
+	#header_nav .tagline
+	{
+		font-size : 15px;
+		font-weight : normal;
+		color : #949494;
+		letter-spacing : -0.04em;
+	}
+
+/*
+------------------------------
+	Gig list styles
+------------------------------
+*/
+
+#list_wrap 
+{
+	width : auto;
+	height : auto;
+}
+
+#giglist
+{
+	list-style : none;
+	margin : 0;
+	padding : 0;
+	width : 960px;
+}
+
+	#giglist li
+	{
+		margin : 0;
+		padding : 0;
+		width : 960px;
+		position : relative;
+	}
+	
+	#giglist li .bg_row
+	{
+		width : 960px;
+		height : 56px;
+		background : url(../images/row_bg.gif) repeat-x;
+		border-bottom : 1px solid #fff;
+		float : left;
+	}
+
+		#giglist .list_row
+		{
+			list-style : none;
+			margin : 0;
+			padding : 0;
+		}
+		
+		#giglist .list_row li
+		{
+			float : left;
+			height : 56px;
+			width : 100px;
+		}
+		
+		#giglist .list_row li.play
+		{
+			width : 42px;
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			text-align : center;
+			padding-top : 20px;
+		}
+		
+			li.play a
+			{
+				width : 16px;
+				height : 18px;
+				display : block;
+				margin-left : 12px;
+			}
+			
+			li.play a.playing
+			{
+				background : url(../images/icon_playing.gif) no-repeat;
+			}
+			
+			li.play a.notplaying
+			{
+				background : url(../images/icon_play.gif) no-repeat;
+			}
+		
+		#giglist .list_row li.date
+		{
+			width : 68px;
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			text-align : center;
+			padding-top : 8px;
+		}
+			li.date .datetitle
+			{
+				margin : 0 auto 0 auto;
+				display : block;
+			}
+		
+			li.date .datetext
+			{
+				font-size : 18px;
+				color : #e73a2a;
+				clear : both;
+			}
+			
+			li.date .soldout
+			{
+/*				margin-top : -8px;
+*/				display : block;
+			}
+		
+		#giglist .list_row li.albumart
+		{
+			width : 74px;
+			text-align : center;
+			padding-top : 7px;
+		}
+		
+			li.albumart img
+			{
+				border : 1px solid #b4b4b4;
+			}
+		
+		#giglist .list_row li.title
+		{
+			width : 344px;
+		}
+		
+			li.title h3
+			{
+				font-size : 22px;
+				font-weight : normal;
+				color : #000;
+				margin : 0;
+				padding-top : 14px;
+			}
+		
+		#giglist .list_row li.discog
+		{
+			width : 38px;
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			text-align : center;
+			padding-top : 20px;
+		}
+		
+			li.discog a.discog_trig
+			{
+				width : 15px;
+				height : 15px;
+				background : url(../images/icon_discog.gif) no-repeat;
+				display : block;
+				margin-left : 10px;
+			}
+		
+		#giglist .list_row li.rating
+		{
+			width : 109px;
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			text-align : center;
+			padding-top : 20px;
+		}
+		
+			li.rating img
+			{
+				
+			}
+		
+		#giglist .list_row li.venue
+		{
+			width : 114px;
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			text-align : center;
+			padding-top : 17px;
+		}
+		
+			li.venue a
+			{
+				font-size : 11px;
+				font-weight : normal;
+				text-decoration : underline;
+				letter-spacing : -0.06em;
+				color : #949494;
+			}
+		
+		#giglist .list_row li.view_detail
+		{
+			width : 101px;
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			text-align : center;
+			padding-top : 17px;
+		}
+		
+			li.view_detail a
+			{
+				font-size : 11px;
+				font-weight : normal;
+				text-decoration : underline;
+				letter-spacing : -0.06em;
+				color : #00aeef;
+				padding-left : 12px;
+				
+			}
+			
+			li.view_detail a.open
+			{
+				background : url(../images/icon_opendetail.gif) left no-repeat;
+			}
+			
+			li.view_detail a.close
+			{
+				background : url(../images/icon_closedetail.gif) left no-repeat;
+			}
+		
+		#giglist .list_row li.status
+		{
+			background : url(../images/row_spacer.gif) top right no-repeat;
+			width : 35px;
+			text-align : center;
+			padding-top : 20px;
+		}
+		#giglist .list_row li.bt
+		{
+			width : 35px;
+			text-align : center;
+			padding-top : 20px;
+		}
+		
+		/*
+		------------------------------
+			Detail Row styles
+		------------------------------
+		*/
+		
+		
+		#giglist .detail_row
+		{
+			width : 960px;
+			padding : 18px 0 18px 0;
+			margin-bottom : 1px;
+			border-bottom : 1px solid #EFEFEF;
+			float : left;
+			display : none;
+			position : relative;
+		}
+		
+			#giglist .detail_row .info
+			{
+				width : 128px;
+				padding-left : 10px;
+				float : left;
+			}
+			
+				#giglist .detail_row .info ul
+				{
+					list-style : none;
+					margin : 0;
+					padding : 0;
+				}
+				
+					#giglist .detail_row .info ul li
+					{
+						line-height : 20px;
+						color : #949494;
+						font-size : 11px;
+						letter-spacing : -0.087em;
+					}
+					
+					#giglist .detail_row .info ul li.title
+					{
+						color : #000;
+					}
+			
+			#giglist .detail_row .summary
+			{
+				width : 462px;
+				float : left;
+			}
+			
+				#giglist .detail_row .summary p
+				{
+					color : #949494;
+					font-size : 15px;
+					letter-spacing : -1px;
+					line-height : 20px;
+					margin : 0;
+					padding : 0 30px 0 0;
+				}
+			
+			#page #list_wrap #giglist .detail_row div.linklist_wrapper
+			{
+				width : 360px;
+				float : left;
+				position : absolute;
+				right : 0;
+				bottom : 18px;
+			}
+			
+				#giglist .detail_row ul.linklist
+				{
+					list-style : none;
+					margin : 0;
+					padding : 0;
+				}
+				
+				#giglist .detail_row ul.linklist li
+				{
+					float : left;
+					width : auto;
+					height : 25px;
+					background : url(../images/detail_spacer.gif) top left no-repeat;
+					padding : 0 10px 0 10px;
+					font-size : 11px;
+					letter-spacing : -0.087em;
+					text-align : center;
+				}
+				
+				#giglist .detail_row ul.linklist li.bandsite
+				{
+					padding-top : 4px;
+				}
+				
+				#giglist .detail_row ul.linklist li.ticketsandtube
+				{
+					padding-right : 0;
+				}
+				
+					li.ticketsandtube  .ticketslink
+					{
+						float : left;
+						margin-top : 4px;
+					}
+					
+					li.ticketsandtube  .youtube
+					{
+						margin : 0 14px 0 14px;
+					}
+				
+				#giglist .detail_row ul.linklist li.count
+				{
+					padding-left : 18px;
+					padding-right : 8px;
+				}
+				
+					li.count img
+					{
+						float : left;
+					}
+				
+					li.count .number
+					{
+						color : #bc5653;
+						font-size : 11px;
+						font-weight : bold;
+						float : left;
+						position : relative;
+						top : -3px;
+					}
+					
+			#giglist .detail_row ul.linklist li.torrent
+			{
+				background : none;
+				padding-right : 20px;
+			}
+			
+			#giglist .detail_row ul.linklist li.postedby
+			{
+				padding-top : 4px;
+				text-align : center;
+			}
+			
+				li.postedby span
+				{
+					font-size : 11px;
+					color : #949494;
+					letter-spacing : 0;
+				}
+
+/*
+------------------------------
+	Popup box styles
+------------------------------
+*/
+
+.popup_wrapper
+{
+	width : 144px;
+	height : auto;
+	font-family : Arial, sans-serif;
+	font-size : 10px;
+	letter-spacing : 0;
+	position : absolute;
+	top : 51px;
+	z-index : 99;
+	
+}
+
+.albumpop
+{
+	left : 74px;
+	display : none;
+}
+
+.discogpop
+{
+	left : 509px;
+	display : none;
+}
+
+.venuepop
+{
+	left : 698px;
+	display : none;
+}
+
+.buyticketspop
+{
+	left : 676px;
+	display : none;
+}
+
+	.popup_wrapper .poptop
+	{
+		width : 144px;
+		height : 33px;
+		background : url(../images/popup_top.gif) no-repeat;
+		float : left;
+		text-align : left;
+	}
+	
+		.popup_wrapper .poptop h4
+		{
+			font-size : 10px;
+			font-weight : bold;
+			text-align : left;
+			color : #000;
+			margin : 0;
+			padding : 13px 0 0 10px;
+		}
+	
+	.popup_wrapper .popmid
+	{
+		width : 144px;
+		height : auto;
+		background : url(../images/popup_mid.gif) repeat-y;
+		float : left;
+	}
+	
+		.popup_wrapper .popcontent
+		{
+			width : 134px;
+			height : auto;
+			background : #fff;
+			margin : 0 auto 0 auto;
+		}
+		
+			.popup_wrapper .popcontent span
+			{
+				display : block;
+				padding : 5px;
+			}
+			
+		.popup_wrapper .popalbum
+		{
+			width : 138px;
+			height : auto;
+			background : none;
+			margin : 0 auto 0 auto;
+		}
+	
+	.popup_wrapper .popbot
+	{
+		width : 144px;
+		height : 6px;
+		background : url(../images/popup_bot.gif) no-repeat;
+		float : left;
+	}

@@ -7,20 +7,36 @@
   <title>Venues: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'screen' %>
+  <!--[if IE]>
+  <link type="text/css"  rel="stylesheet" href="css/ie.css" />         
+  <![endif]-->
   <%= javascript_include_tag 'player' %>
   <%= javascript_include_tag 'swfobject' %>
+  <%= javascript_include_tag 'jquery-1.3.1.min' %>
+  <%= javascript_include_tag 'common' %>
 </head>
 <body>
-<div id="header">
-  <%= image_tag '/images/header_logo.jpg', :style => 'margin-right: 60px;' %>
-  <%= image_tag '/images/header_menu.jpg', :style => 'margin-left: 60px;' %>
-</div>
+<div id="page">
+
+	<div id="header">
+		<h1 id="header_title">Heavy Heard</h1><a class="login" href="#"></a><h2>who we're listening to. when they're touring.</h2>
+		<div id="header_nav">
+			<div id="nav_wrap">
+			<a class="nav_gigs" href="#">Gigs</a><span class="nav_spacer">/</span><a class="nav_artists" href="#">Artists</a>
+			</div>
+
+			<span class="tagline">who we're listening to</span>
+		</div>
+	</div>
+
 <p style="color: green"><%= flash[:notice] %></p>
 <%= navlinks unless current_page?(:controller => 'gigs', :action => 'index') %>
 
 <br/><br/>
 
 <%= yield  %>
-
+<div id="footer"></div>
+</div>
 </body>
 </html>

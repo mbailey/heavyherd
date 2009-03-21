@@ -2,7 +2,11 @@
 module ApplicationHelper
   def navlinks
     %w(gigs artists venues ticket_sellers).collect { |v|
-      link_to_unless_current v, send("#{v}_path")
+      link_to_unless_current v, send("admin_#{v}_path")
     }.join(' ')
+  end
+  
+  def play_track(url)
+    link_to('', "javascript:player.sendEvent('LOAD', '#{url}'); player.sendEvent('PLAY')", :class => 'playing') unless url.blank?
   end
 end

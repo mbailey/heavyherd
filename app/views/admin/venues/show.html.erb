@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @venue.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @venue.address_id %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @venue.email %>
+</p>
+
+<p>
+  <b>Web:</b>
+  <%=h @venue.web %>
+</p>
+
+
+<%= link_to 'Edit', edit_venue_path(@venue) %> |
+<%= link_to 'Back', venues_path %>

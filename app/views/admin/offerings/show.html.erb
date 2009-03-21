@@ -1,0 +1,13 @@
+<p>
+  <b>Ticket seller:</b>
+  <%=h @offering.ticket_seller_id %>
+</p>
+
+<p>
+  <b>Gig:</b>
+  <%=h @offering.gig_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_offering_path(@offering) %> |
+<%= link_to 'Back', offerings_path %>

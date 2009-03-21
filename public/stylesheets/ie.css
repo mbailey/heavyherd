@@ -1,0 +1,5 @@
+#giglist .list_row li.date .soldout
+{
+	margin-top : 0px;
+	display : block;
+}

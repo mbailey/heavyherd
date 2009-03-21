@@ -1,0 +1,106 @@
+<!-- start : gig list loop -->
+<li class="giglist_row clearfix"> 
+	<!-- start : pop up boxes -->
+	<div class="popup_wrapper albumpop">
+
+		<div class="poptop"><h4></h4></div>
+		<div class="popmid">
+			<div class="popalbum">
+				<%= image_tag gig.artist.cover_image, :width => 138 %>
+			</div>
+		</div>
+		<div class="popbot"></div>
+	</div>	
+	
+	<div class="popup_wrapper discogpop">
+
+		<div class="poptop"><h4>Title area</h4></div>
+		<div class="popmid">
+			<div class="popcontent">
+				<span>text area <br />text area <br />text area <br />text area <br /></span>
+			</div>
+		</div>
+
+		<div class="popbot"></div>
+	</div>
+	
+	<div class="popup_wrapper venuepop">
+		<div class="poptop"><h4>Title area</h4></div>
+		<div class="popmid">
+			<div class="popcontent">
+				<span>text area <br />text area <br />text area <br />text area <br /></span>
+
+			</div>
+		</div>
+		<div class="popbot"></div>
+	</div>
+	
+	<div class="popup_wrapper buyticketspop">
+		<div class="poptop"><h4>Tickets Available From</h4></div>
+		<div class="popmid">
+			<div class="popcontent">
+
+				<span>text area <br />text area <br />text area <br />text area <br /></span>
+			</div>
+		</div>
+		<div class="popbot"></div>
+	</div>
+	<!-- end : pop up boxes -->
+	<div class="bg_row">
+
+		<ul class="list_row">
+			<li class="play"><%= play_track(gig.artist.mp3) %> </a></li>
+			<li class="date"> <img class="datetitle" src="/images/icon_gigdate.gif" alt="Gig Date" /><span class="datetext"><%= gig.date.strftime("%d.%m") %></span><span class="soldout"><%= image_tag "/images/icon_soldout.gif", :alt=>"Sold out" if gig.sold_out %></span></li>
+			<li class="albumart"> <a class="album_trig" href="#"><%= image_tag gig.artist.cover_image, :width => 44, :alt=>"Album cover" unless gig.artist.cover_image.blank?%></a></li>
+			<li class="title"><h3><%= link_to h(truncate(gig.artist.name,20)), gig.artist %></h3> </li>
+			<li class="discog"><a class="discog_trig" href="#"></a> </li>
+
+			<li class="rating"> <img src="/images/icon_stars.gif" alt="rating" /></li>
+			<li class="venue"><a class="venue_trig" href="#">Corner Hotel</a> </li>
+			<li class="view_detail"><a class="detail_toggle open" href="javascript:void(0);"><span>Display detail</span></a> </li>
+			<li class="status"><img src="/images/icon_new.gif" alt="New" /> </li>
+			<li class="bt"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? %> </li>
+		</ul>
+	</div>
+	
+	  <!-- %a{:href=>"javascript:player.sendEvent('LOAD', '#{gig.artist.mp3}'); player.sendEvent('PLAY')"}=image_tag('/images/play.jpg', :border => 0)
+
+    %td
+      .datename= gig.date.strftime("%A")
+      .datenum= gig.date.strftime("%d.%m")
+    %td= image_tag(gig.artist.cover_image, :width => 44, :class => :cover) unless gig.artist.cover_image.blank?
+    %td.artist= link_to h(gig.artist.name), gig.artist
+    %td= image_tag('/images/stars_4.gif', :border => 0) 
+
+    %td.venue= link_to h(gig.venue.name), gig.venue
+
+    %td= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor -->
+
+
+	<div class="detail_row">
+		<div class="info">
+			<ul class="infolist">
+				<li class="title">Favourite Track</li>
+				<li>track name</li>
+				<li class="title">Album</li>
+				<li>Album name</li>
+
+			</ul>
+		</div>
+		<div class="summary">
+			<p><%= gig.artist.description %></p>
+		</div>
+		<div class="linklist_wrapper">
+			<ul class="linklist">
+				<li class="bandsite"><%= link_to %>Visit Band Website</a></li>
+
+				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><a class="youtubelink" href="#"><img src="/images/icon_youtube.gif" /></a></span></li>
+				<li class="count"><img src="/images/icon_count.gif" /><span class="number">6</span></li>
+				<li class="torrent"><a href="#"><img src="/images/icon_torrent.gif" /></a></li>
+				<li class="postedby"><span>BS</span></li>
+			</ul>	
+		</div>
+	</div>
+</li>
+
+<!-- end : gig list loop -->

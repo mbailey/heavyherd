@@ -1,3 +1,6 @@
+* show standard album cover if artwork missing
+* put dateDOW instead of GIGDATE
+
 * create admin/ dir
 
 * list gigs
@@ -20,3 +23,15 @@ write password plugin (fun4paws)
 - upcoming gigs?
 
 * create venues bootstrap
+
+
+
+* Add tracks model
+belongs_to :artist
+has_and_belongs_to_many :albums
+- name
+- album
+- artist
+
+* Add album model
+- has_many :tracks

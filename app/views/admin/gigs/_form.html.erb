@@ -1,0 +1,34 @@
+<% form_for(@gig) do |f| %>
+  <%= f.error_messages %>
+
+  <% @venues = Venue.find(:all, :order => "name" ) %>
+  <p>
+    <%= f.label :venue_id %><br />
+    <%= f.collection_select(:venue_id, @venues, :id, :name) %>
+  </p>
+  <% @artists = Artist.find(:all, :order => "name" ) %>
+  <p>
+	<%= f.label :artist_id %><br />
+    <%= f.collection_select(:artist_id, @artists, :id, :name) %> 
+	<%= link_to 'New artist', new_artist_path, :target => '_new' %>  
+  </p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :door_open, 'Doors open' %><br />
+    <%= f.time_select :door_open %>
+  </p>
+  <p>
+    <%= f.label :sold_out %><br />
+    <%= f.check_box :sold_out %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

@@ -1,0 +1,33 @@
+<p>
+  <b>Venue:</b>
+  <%=h @gig.venue_id %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%=h @gig.artist_id %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%=h @gig.date %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @gig.price %>
+</p>
+
+<p>
+  <b>Door open:</b>
+  <%=h @gig.door_open %>
+</p>
+
+<p>
+  <b>Sold out:</b>
+  <%=h @gig.sold_out %>
+</p>
+
+
+<%= link_to 'Edit', edit_gig_path(@gig) %> |
+<%= link_to 'Back', gigs_path %>
