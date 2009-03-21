@@ -1,3 +1,4 @@
+* only show keyhole if not logged in
 * show standard album cover if artwork missing
 * put dateDOW instead of GIGDATE
 

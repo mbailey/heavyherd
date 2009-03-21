@@ -29,7 +29,13 @@
 			<span class="tagline">who we're listening to</span>
 		</div>
 	</div>
-
+	<% if !current_user %>
+	  <%= link_to "Register", new_account_path %> |
+	  <%= link_to "Log In", new_user_session_path %> |
+	<% else %>
+	  <%= link_to "My Account", account_path %> |
+	  <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+	<% end %>
 <p style="color: green"><%= flash[:notice] %></p>
 <%= navlinks unless current_page?(:controller => 'gigs', :action => 'index') %>
 

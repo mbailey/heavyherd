@@ -61,7 +61,7 @@ img
 ------------------------------
 */
 
-h1
+/*h1
 {
 	font-size : 80px;
 	font-weight : normal;
@@ -70,10 +70,19 @@ h1
 	margin : 35px 0 0 50px;
 	padding : 0;
 	float : left;
-}
+}*/
 
 h1#header_title
 {
+	/*	mike */	
+	font-size : 80px;
+	font-weight : normal;
+	color : #3dc0f0;
+	letter-spacing : -3px;
+	margin : 35px 0 0 50px;
+	padding : 0;
+	float : left;
+	/* end mike */
 	width : 376px;
 	height : 80px;
 	background : url(../images/header_title.gif) no-repeat;
