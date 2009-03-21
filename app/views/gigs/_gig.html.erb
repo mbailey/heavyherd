@@ -92,7 +92,7 @@
 		</div>
 		<div class="linklist_wrapper">
 			<ul class="linklist">
-				<li class="bandsite"><%= link_to %>Visit Band Website</a></li>
+				<li class="bandsite"><%= link_to_unless gig.artist.web.blank?, 'Visit Band Website', gig.artist.web, :target => 'new' %></li>
 
 				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><a class="youtubelink" href="#"><img src="/images/icon_youtube.gif" /></a></span></li>
 				<li class="count"><img src="/images/icon_count.gif" /><span class="number">6</span></li>
