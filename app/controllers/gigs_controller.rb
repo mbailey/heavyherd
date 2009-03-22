@@ -1,4 +1,5 @@
 class GigsController < ApplicationController
+    
   # GET /gigs
   # GET /gigs.xml
   def index

@@ -274,7 +274,7 @@ h2
 		
 		#giglist .list_row li.title
 		{
-			width : 344px;
+			width : 379px;
 		}
 		
 			li.title h3
@@ -364,7 +364,6 @@ h2
 		
 		#giglist .list_row li.status
 		{
-			background : url(../images/row_spacer.gif) top right no-repeat;
 			width : 35px;
 			text-align : center;
 			padding-top : 20px;

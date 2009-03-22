@@ -59,7 +59,6 @@
 			<li class="venue"><a class="venue_trig" href="#">Corner Hotel</a> </li>
 			<li class="view_detail"><a class="detail_toggle open" href="javascript:void(0);"><span>Display detail</span></a> </li>
 			<li class="status"><img src="/images/icon_new.gif" alt="New" /> </li>
-			<li class="bt"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? %> </li>
 		</ul>
 	</div>
 	
@@ -96,7 +95,7 @@
 
 				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><a class="youtubelink" href="#"><img src="/images/icon_youtube.gif" /></a></span></li>
 				<li class="count"><img src="/images/icon_count.gif" /><span class="number">6</span></li>
-				<li class="torrent"><a href="#"><img src="/images/icon_torrent.gif" /></a></li>
+				<li class="torrent"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? %></li>
 				<li class="postedby"><span>BS</span></li>
 			</ul>	
 		</div>
