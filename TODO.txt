@@ -1,4 +1,7 @@
 * make player work
+- progress to next song
+- display tack name and artist
+- display links to buy
 
 * update gigs/artist words based on which link chosen
 * need to add margin to main 
