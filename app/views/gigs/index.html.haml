@@ -1,5 +1,6 @@
 #list_wrap
   %ul#giglist
+    - @track_num = 0
     = render :partial => 'gig', :collection => @gigs
 
 #player

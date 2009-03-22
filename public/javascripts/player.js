@@ -12,3 +12,5 @@ function addListeners() {
     setTimeout("addListeners()",100);
   }
 }
+
+function stateTracker(obj) { alert('the new state is: '+obj.state); };

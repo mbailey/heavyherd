@@ -48,8 +48,27 @@
 	<!-- end : pop up boxes -->
 	<div class="bg_row">
 
+		<% if ! gig.artist.mp3.blank? %>
+			<script type="text/javascript">
+				trackList[<%= @track_num %>] = ({
+					url:'<%= gig.artist.mp3 %>',
+					artist:'<%= gig.artist.name %>',
+					song:'<%= gig.artist.track %>',
+					amazon:'',
+					itunes:''
+				});
+			</script>
+		<% end %>
+		
 		<ul class="list_row">
-			<li class="play"><%= play_track(gig.artist.mp3) %> </a></li>
+			<li class="play">
+				<%#= play_track(gig.artist.mp3) %> 
+				<% if ! gig.artist.mp3.blank? %>
+			 		<%= link_to('', "#", :onclick => "setCurrentTrack(#{@track_num}); return false;", :id => "track_#{@track_num}", :class => 'notplaying') %>
+					<% @track_num+=1 %>
+			        
+			    <% end %>
+			</li>
 			<li class="date"> <img class="datetitle" src="/images/icon_gigdate.gif" alt="Gig Date" /><span class="datetext"><%= gig.date.strftime("%d.%m") %></span><span class="soldout"><%= image_tag "/images/icon_soldout.gif", :alt=>"Sold out" if gig.sold_out %></span></li>
 			<li class="albumart"> <a class="album_trig" href="#"><%= image_tag gig.artist.cover_image, :width => 44, :alt=>"Album cover" unless gig.artist.cover_image.blank?%></a></li>
 			<li class="title"><h3><%= link_to_unless current_user.nil?, h(truncate(gig.artist.name,20)), edit_admin_artist_url(gig.artist) %></h3> </li>
