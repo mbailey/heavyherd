@@ -11,7 +11,7 @@
 	<td><%= gig.venue.name %></td>
     <td><%= link_to 'Show', admin_gig_path(gig) %></td>
     <td><%= link_to 'Edit', edit_admin_gig_path(gig) %></td>
-    <td><%= link_to 'Destroy', gig, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', admin_gig_path(gig), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

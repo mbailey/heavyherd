@@ -18,9 +18,9 @@
     <td><%=h artist.web %></td>
     <td><%=h artist.mp3 %></td>
     <td><%=h artist.tor %></td>
-    <td><%= link_to 'Show', artist %></td>
-    <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_artist_path(artist) %></td>
+    <td><%= link_to 'Edit', edit_admin_artist_path(artist) %></td>
+    <td><%= link_to 'Destroy', admin_artist_path(artist), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

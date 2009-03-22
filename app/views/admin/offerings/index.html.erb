@@ -10,9 +10,9 @@
   <tr>
     <td><%=h offering.ticket_seller_id %></td>
     <td><%=h offering.gig_id %></td>
-    <td><%= link_to 'Show', offering %></td>
-    <td><%= link_to 'Edit', edit_offering_path(offering) %></td>
-    <td><%= link_to 'Destroy', offering, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_offering_path(offering) %></td>
+    <td><%= link_to 'Edit', edit_admin_offering_path(offering) %></td>
+    <td><%= link_to 'Destroy', admin_offering_path(offering), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

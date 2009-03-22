@@ -16,9 +16,9 @@
     <td><%=h ticket_seller.phone %></td>
     <td><%=h ticket_seller.web %></td>
     <td><%=h ticket_seller.email %></td>
-    <td><%= link_to 'Show', ticket_seller %></td>
-    <td><%= link_to 'Edit', edit_ticket_seller_path(ticket_seller) %></td>
-    <td><%= link_to 'Destroy', ticket_seller, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_ticket_seller_path(ticket_seller) %></td>
+    <td><%= link_to 'Edit', edit_admin_ticket_seller_path(ticket_seller) %></td>
+    <td><%= link_to 'Destroy', admin_ticket_seller_path(ticket_seller), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

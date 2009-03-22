@@ -45,7 +45,7 @@ class Admin::ArtistsController < ApplicationController
     respond_to do |format|
       if @artist.save
         flash[:notice] = 'Artist was successfully created.'
-        format.html { redirect_to(@artist) }
+        format.html { redirect_to(admin_artists_path(@artist)) }
         format.xml  { render :xml => @artist, :status => :created, :location => @artist }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::ArtistsController < ApplicationController
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
         flash[:notice] = 'Artist was successfully updated.'
-        format.html { redirect_to(@artist) }
+        format.html { redirect_to(admin_artists_path(@artist)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class Admin::ArtistsController < ApplicationController
     @artist.destroy
 
     respond_to do |format|
-      format.html { redirect_to(artists_url) }
+      format.html { redirect_to(admin_artists_url) }
       format.xml  { head :ok }
     end
   end

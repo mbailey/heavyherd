@@ -20,9 +20,9 @@
     <td><%=h address.postcode %></td>
     <td><%=h address.lat %></td>
     <td><%=h address.lng %></td>
-    <td><%= link_to 'Show', address %></td>
-    <td><%= link_to 'Edit', edit_address_path(address) %></td>
-    <td><%= link_to 'Destroy', address, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_address_path(address) %></td>
+    <td><%= link_to 'Edit', edit_admin_address_path(address) %></td>
+    <td><%= link_to 'Destroy', admin_address_path(address), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -45,7 +45,7 @@ class Admin::TicketSellersController < ApplicationController
     respond_to do |format|
       if @ticket_seller.save
         flash[:notice] = 'TicketSeller was successfully created.'
-        format.html { redirect_to(@ticket_seller) }
+        format.html { redirect_to(admin_ticket_seller(@ticket_seller)) }
         format.xml  { render :xml => @ticket_seller, :status => :created, :location => @ticket_seller }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::TicketSellersController < ApplicationController
     respond_to do |format|
       if @ticket_seller.update_attributes(params[:ticket_seller])
         flash[:notice] = 'TicketSeller was successfully updated.'
-        format.html { redirect_to(@ticket_seller) }
+        format.html { redirect_to(admin_ticket_seller(@ticket_seller)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class Admin::TicketSellersController < ApplicationController
     @ticket_seller.destroy
 
     respond_to do |format|
-      format.html { redirect_to(ticket_sellers_url) }
+      format.html { redirect_to(admin_ticket_sellers_url) }
       format.xml  { head :ok }
     end
   end
