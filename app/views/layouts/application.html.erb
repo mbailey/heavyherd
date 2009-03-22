@@ -20,10 +20,16 @@
 <div id="page">
 
 	<div id="header">
-		<h1 id="header_title">Heavy Heard</h1><a class="login" href="#"></a><h2>who we're listening to. when they're touring.</h2>
+		<h1 id="header_title">Heavy Heard</h1>
+		<% if !current_user %>
+			<%= link_to "", new_user_session_path, :class => 'login' %>
+		<% else %>
+			<%= link_to "", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?", :class => 'logout' %>
+		<% end %>
+		<h2>who we're listening to. when they're touring.</h2>
 		<div id="header_nav">
 			<div id="nav_wrap">
-			<a class="nav_gigs" href="#">Gigs</a><span class="nav_spacer">/</span><a class="nav_artists" href="#">Artists</a>
+			<span><%= link_to_unless_current 'Gigs', gigs_url, :class=>"nav_gigs" %></span><span class="nav_spacer">/</span><span><%= link_to_unless_current 'Artists', artists_url, :class=>"nav_artists" %></span>
 			</div>
 
 			<span class="tagline">who we're listening to</span>
@@ -38,9 +44,6 @@
 	<% end %> -->
 <p style="color: green"><%= flash[:notice] %></p>
 <%= navlinks if current_user %>
-
-<br/><br/>
-
 <%= yield  %>
 <div id="footer"></div>
 </div>

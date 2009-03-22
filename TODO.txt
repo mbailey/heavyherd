@@ -1,5 +1,7 @@
+* update gigs/artist words based on which link chosen
+* need to add margin to main 
 * add roles: admin, editor
-* switch authlogic to email
+* switch authlogic to email?
 * link to artists admin page only if admin
 
 * only show keyhole if not logged in
