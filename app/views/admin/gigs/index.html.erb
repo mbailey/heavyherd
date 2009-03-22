@@ -1,0 +1,21 @@
+<h1>Listing gigs</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @gigs.each do |gig| %>
+  <tr>
+	<td><%= gig.date.strftime("%d.%m") %></td>
+	<td><%= gig.artist.name %></td>
+	<td><%= gig.venue.name %></td>
+    <td><%= link_to 'Show', admin_gig_path(gig) %></td>
+    <td><%= link_to 'Edit', edit_admin_gig_path(gig) %></td>
+    <td><%= link_to 'Destroy', gig, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New gig', new_admin_gig_path %>

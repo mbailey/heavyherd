@@ -1,4 +1,4 @@
-<% form_for(@gig) do |f| %>
+<% form_for([:admin, @gig]) do |f| %>
   <%= f.error_messages %>
 
   <% @venues = Venue.find(:all, :order => "name" ) %>
@@ -10,7 +10,7 @@
   <p>
 	<%= f.label :artist_id %><br />
     <%= f.collection_select(:artist_id, @artists, :id, :name) %> 
-	<%= link_to 'New artist', new_artist_path, :target => '_new' %>  
+	<%= link_to 'New artist', new_admin_artist_path, :target => '_new' %>  
   </p>
   <p>
     <%= f.label :date %><br />

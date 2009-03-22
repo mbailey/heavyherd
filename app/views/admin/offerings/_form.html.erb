@@ -1,0 +1,15 @@
+<% form_for([:admin, @offering]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :ticket_seller_id %><br />
+    <%= f.text_field :ticket_seller_id %>
+  </p>
+  <p>
+    <%= f.label :gig_id %><br />
+    <%= f.text_field :gig_id %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
