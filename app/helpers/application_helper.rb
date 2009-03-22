@@ -7,6 +7,6 @@ module ApplicationHelper
   end
   
   def play_track(url)
-    link_to('', "javascript:player.sendEvent('LOAD', '#{url}'); player.sendEvent('PLAY')", :class => 'playing') unless url.blank?
+    link_to('', "javascript:player.sendEvent('LOAD', '#{url}'); player.sendEvent('PLAY')", :class => 'notplaying') unless url.blank?
   end
 end

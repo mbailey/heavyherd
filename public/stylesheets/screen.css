@@ -52,7 +52,7 @@ img
 #header
 {
 	width : auto;
-	height : 180px;
+	height : 160px;
 }
 
 /*
@@ -85,23 +85,25 @@ h1#header_title
 	/* end mike */
 	width : 376px;
 	height : 80px;
-	background : url(../images/header_title.gif) no-repeat;
+	background : url(/images/header_title.gif) no-repeat;
 	margin-top : 48px;
 	text-indent : -4000px;
 	overflow : hidden;
 }
 
-a.login
+a.login, a.logout
 {
 	width : 9px;
 	height : 10px;
 	display : block;
-	background : url(../images/icon_login.gif) no-repeat;
 	float : left;
 	position : relative;
 	top : 47px;
 	margin : 0 2px 0 2px;
 }
+
+a.login:hover {background : url(/images/icon_login.gif) no-repeat;}
+a.logout:hover {background : url(/images/icon_logout.gif) no-repeat;}
 
 h2
 {
@@ -129,10 +131,17 @@ h2
 		font-size : 24px;
 	}
 	
+		#nav_wrap span
+		{
+			color : #e94637;
+			float : left;
+		}
+		
 		#nav_wrap a.nav_gigs
 		{
 			color : #c9c9c9;
 			float : left;
+			text-decoration : none;
 		}
 		
 		#nav_wrap .nav_spacer
@@ -144,7 +153,7 @@ h2
 		
 		#nav_wrap a.nav_artists
 		{
-			color : #e94637;
+			color : #c9c9c9;
 			float : left;
 			text-decoration : none;
 		}
@@ -189,7 +198,7 @@ h2
 	{
 		width : 960px;
 		height : 56px;
-		background : url(../images/row_bg.gif) repeat-x;
+		background : url(/images/row_bg.gif) repeat-x;
 		border-bottom : 1px solid #fff;
 		float : left;
 	}
@@ -211,7 +220,7 @@ h2
 		#giglist .list_row li.play
 		{
 			width : 42px;
-			background : url(../images/row_spacer.gif) top right no-repeat;
+			background : url(/images/row_spacer.gif) top right no-repeat;
 			text-align : center;
 			padding-top : 20px;
 		}
@@ -226,18 +235,18 @@ h2
 			
 			li.play a.playing
 			{
-				background : url(../images/icon_playing.gif) no-repeat;
+				background : url(/images/icon_playing.gif) no-repeat;
 			}
 			
 			li.play a.notplaying
 			{
-				background : url(../images/icon_play.gif) no-repeat;
+				background : url(/images/icon_play.gif) no-repeat;
 			}
 		
 		#giglist .list_row li.date
 		{
 			width : 68px;
-			background : url(../images/row_spacer.gif) top right no-repeat;
+			background : url(/images/row_spacer.gif) top right no-repeat;
 			text-align : center;
 			padding-top : 8px;
 		}
@@ -289,7 +298,7 @@ h2
 		#giglist .list_row li.discog
 		{
 			width : 38px;
-			background : url(../images/row_spacer.gif) top right no-repeat;
+			background : url(/images/row_spacer.gif) top right no-repeat;
 			text-align : center;
 			padding-top : 20px;
 		}
@@ -298,7 +307,7 @@ h2
 			{
 				width : 15px;
 				height : 15px;
-				background : url(../images/icon_discog.gif) no-repeat;
+				background : url(/images/icon_discog.gif) no-repeat;
 				display : block;
 				margin-left : 10px;
 			}
@@ -306,7 +315,7 @@ h2
 		#giglist .list_row li.rating
 		{
 			width : 109px;
-			background : url(../images/row_spacer.gif) top right no-repeat;
+			background : url(/images/row_spacer.gif) top right no-repeat;
 			text-align : center;
 			padding-top : 20px;
 		}
@@ -319,7 +328,7 @@ h2
 		#giglist .list_row li.venue
 		{
 			width : 114px;
-			background : url(../images/row_spacer.gif) top right no-repeat;
+			background : url(/images/row_spacer.gif) top right no-repeat;
 			text-align : center;
 			padding-top : 17px;
 		}
@@ -336,7 +345,7 @@ h2
 		#giglist .list_row li.view_detail
 		{
 			width : 101px;
-			background : url(../images/row_spacer.gif) top right no-repeat;
+			background : url(/images/row_spacer.gif) top right no-repeat;
 			text-align : center;
 			padding-top : 17px;
 		}
@@ -354,12 +363,12 @@ h2
 			
 			li.view_detail a.open
 			{
-				background : url(../images/icon_opendetail.gif) left no-repeat;
+				background : url(/images/icon_opendetail.gif) left no-repeat;
 			}
 			
 			li.view_detail a.close
 			{
-				background : url(../images/icon_closedetail.gif) left no-repeat;
+				background : url(/images/icon_closedetail.gif) left no-repeat;
 			}
 		
 		#giglist .list_row li.status
@@ -457,7 +466,7 @@ h2
 					float : left;
 					width : auto;
 					height : 25px;
-					background : url(../images/detail_spacer.gif) top left no-repeat;
+					background : url(/images/detail_spacer.gif) top left no-repeat;
 					padding : 0 10px 0 10px;
 					font-size : 11px;
 					letter-spacing : -0.087em;
@@ -572,7 +581,7 @@ h2
 	{
 		width : 144px;
 		height : 33px;
-		background : url(../images/popup_top.gif) no-repeat;
+		background : url(/images/popup_top.gif) no-repeat;
 		float : left;
 		text-align : left;
 	}
@@ -591,7 +600,7 @@ h2
 	{
 		width : 144px;
 		height : auto;
-		background : url(../images/popup_mid.gif) repeat-y;
+		background : url(/images/popup_mid.gif) repeat-y;
 		float : left;
 	}
 	
@@ -621,6 +630,6 @@ h2
 	{
 		width : 144px;
 		height : 6px;
-		background : url(../images/popup_bot.gif) no-repeat;
+		background : url(/images/popup_bot.gif) no-repeat;
 		float : left;
 	}
