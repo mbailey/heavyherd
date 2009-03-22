@@ -45,7 +45,7 @@ class Admin::OfferingsController < ApplicationController
     respond_to do |format|
       if @offering.save
         flash[:notice] = 'Offering was successfully created.'
-        format.html { redirect_to(admin_offering(@offering)) }
+        format.html { redirect_to(admin_offering_path(@offering)) }
         format.xml  { render :xml => @offering, :status => :created, :location => @offering }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::OfferingsController < ApplicationController
     respond_to do |format|
       if @offering.update_attributes(params[:offering])
         flash[:notice] = 'Offering was successfully updated.'
-        format.html { redirect_to(admin_offering(@offering)) }
+        format.html { redirect_to(admin_offering_path(@offering)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

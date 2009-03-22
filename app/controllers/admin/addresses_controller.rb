@@ -45,7 +45,7 @@ class Admin::AddressesController < ApplicationController
     respond_to do |format|
       if @address.save
         flash[:notice] = 'Address was successfully created.'
-        format.html { redirect_to(@address) }
+        format.html { redirect_to(admin_address_path(@address)) }
         format.xml  { render :xml => @address, :status => :created, :location => @address }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::AddressesController < ApplicationController
     respond_to do |format|
       if @address.update_attributes(params[:address])
         flash[:notice] = 'Address was successfully updated.'
-        format.html { redirect_to(@address) }
+        format.html { redirect_to(admin_address_path(@address)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class Admin::AddressesController < ApplicationController
     @address.destroy
 
     respond_to do |format|
-      format.html { redirect_to(addresses_url) }
+      format.html { redirect_to(admin_addresses_url) }
       format.xml  { head :ok }
     end
   end
