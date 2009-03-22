@@ -1,48 +1,6 @@
 <h1>Editing artist</h1>
 
-<% form_for(@artist) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :album %><br />
-    <%= f.text_field :album %>
-  </p>
-  <p>
-    <%= f.label :track %><br />
-    <%= f.text_field :track %>
-  </p>
-  <p>
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </p>
-  <p>
-    <%= f.label :web %><br />
-    <%= f.text_field :web %>
-  </p>
-  <p>
-    <%= f.label :cover_image %><br />
-    <%= f.text_field :cover_image %>
-  </p>
-  <p>
-    <%= f.label :mp3 %><br />
-    <%= f.text_field :mp3 %>
-  </p>
-  <p>
-    <%= f.label :tor %><br />
-    <%= f.text_field :tor %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
+<%= render :partial => 'form' %>
 
 <%= link_to 'Show', @artist %> |
 <%= link_to 'Back', artists_path %>

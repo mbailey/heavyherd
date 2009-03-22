@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090321140200) do
+ActiveRecord::Schema.define(:version => 20090322101146) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_1"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20090321140200) do
     t.string   "track"
     t.string   "album"
     t.string   "description"
+    t.string   "youtube"
   end
 
   create_table "gigs", :force => true do |t|

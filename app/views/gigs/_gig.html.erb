@@ -52,7 +52,7 @@
 			<li class="play"><%= play_track(gig.artist.mp3) %> </a></li>
 			<li class="date"> <img class="datetitle" src="/images/icon_gigdate.gif" alt="Gig Date" /><span class="datetext"><%= gig.date.strftime("%d.%m") %></span><span class="soldout"><%= image_tag "/images/icon_soldout.gif", :alt=>"Sold out" if gig.sold_out %></span></li>
 			<li class="albumart"> <a class="album_trig" href="#"><%= image_tag gig.artist.cover_image, :width => 44, :alt=>"Album cover" unless gig.artist.cover_image.blank?%></a></li>
-			<li class="title"><h3><%= link_to h(truncate(gig.artist.name,20)), gig.artist %></h3> </li>
+			<li class="title"><h3><%= link_to_unless current_user.nil?, h(truncate(gig.artist.name,20)), edit_admin_artist_url(gig.artist) %></h3> </li>
 			<li class="discog"><a class="discog_trig" href="#"></a> </li>
 
 			<li class="rating"> <img src="/images/icon_stars.gif" alt="rating" /></li>
@@ -62,27 +62,13 @@
 		</ul>
 	</div>
 	
-	  <!-- %a{:href=>"javascript:player.sendEvent('LOAD', '#{gig.artist.mp3}'); player.sendEvent('PLAY')"}=image_tag('/images/play.jpg', :border => 0)
-
-    %td
-      .datename= gig.date.strftime("%A")
-      .datenum= gig.date.strftime("%d.%m")
-    %td= image_tag(gig.artist.cover_image, :width => 44, :class => :cover) unless gig.artist.cover_image.blank?
-    %td.artist= link_to h(gig.artist.name), gig.artist
-    %td= image_tag('/images/stars_4.gif', :border => 0) 
-
-    %td.venue= link_to h(gig.venue.name), gig.venue
-
-    %td= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor -->
-
-
 	<div class="detail_row">
 		<div class="info">
 			<ul class="infolist">
 				<li class="title">Favourite Track</li>
-				<li>track name</li>
+				<li><%= gig.artist.track %></li>
 				<li class="title">Album</li>
-				<li>Album name</li>
+				<li><%= gig.artist.album %></li>
 
 			</ul>
 		</div>
@@ -91,12 +77,12 @@
 		</div>
 		<div class="linklist_wrapper">
 			<ul class="linklist">
-				<li class="bandsite"><%= link_to_unless gig.artist.web.blank?, 'Visit Band Website', gig.artist.web, :target => 'new' %></li>
+				<li class="bandsite"><%= link_to 'Visit Band Website', gig.artist.web, :target => 'new' unless gig.artist.web.blank? %></li>
 
-				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><a class="youtubelink" href="#"><img src="/images/icon_youtube.gif" /></a></span></li>
+				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><%= link_to image_tag("/images/icon_youtube.gif"), gig.artist.youtube, :class=>"youtubelink", :target => 'new' unless gig.artist.youtube.blank? %></span></li>
 				<li class="count"><img src="/images/icon_count.gif" /><span class="number">6</span></li>
 				<li class="torrent"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? %></li>
-				<li class="postedby"><span>BS</span></li>
+				<li class="postedby"><span></span></li>
 			</ul>	
 		</div>
 	</div>

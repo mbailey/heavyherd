@@ -3,7 +3,7 @@ class GigsController < ApplicationController
   # GET /gigs
   # GET /gigs.xml
   def index
-    @gigs = Gig.find(:all, :order => 'date')
+    @gigs = Gig.future
 
     respond_to do |format|
       format.html # index.html.haml

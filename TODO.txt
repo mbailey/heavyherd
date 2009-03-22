@@ -1,11 +1,11 @@
+* make player work
+
 * update gigs/artist words based on which link chosen
 * need to add margin to main 
 * highlight play button on hover
 * add roles: admin, editor
 * switch authlogic to email?
 * link to artists admin page only if admin
-
-* only show keyhole if not logged in
 * show standard album cover if artwork missing
 * put dateDOW instead of GIGDATE
 
