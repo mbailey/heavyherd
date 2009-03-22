@@ -45,7 +45,7 @@ class Admin::GigsController < Admin::BaseController
     respond_to do |format|
       if @gig.save
         flash[:notice] = 'Gig was successfully created.'
-        format.html { redirect_to(@gig) }
+        format.html { redirect_to(admin_gig_path(@gig)) }
         format.xml  { render :xml => @gig, :status => :created, :location => @gig }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::GigsController < Admin::BaseController
     respond_to do |format|
       if @gig.update_attributes(params[:gig])
         flash[:notice] = 'Gig was successfully updated.'
-        format.html { redirect_to(@gig) }
+        format.html { redirect_to(admin_gig_path(@gig)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class Admin::GigsController < Admin::BaseController
     @gig.destroy
 
     respond_to do |format|
-      format.html { redirect_to(gigs_url) }
+      format.html { redirect_to(admin_gigs_url) }
       format.xml  { head :ok }
     end
   end

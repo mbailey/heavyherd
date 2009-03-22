@@ -45,7 +45,7 @@ class Admin::VenuesController < ApplicationController
     respond_to do |format|
       if @venue.save
         flash[:notice] = 'Venue was successfully created.'
-        format.html { redirect_to(@venue) }
+        format.html { redirect_to(admin_venue_path(@venue)) }
         format.xml  { render :xml => @venue, :status => :created, :location => @venue }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::VenuesController < ApplicationController
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
         flash[:notice] = 'Venue was successfully updated.'
-        format.html { redirect_to(@venue) }
+        format.html { redirect_to(admin_venue_path(@venue)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class Admin::VenuesController < ApplicationController
     @venue.destroy
 
     respond_to do |format|
-      format.html { redirect_to(venues_url) }
+      format.html { redirect_to(admin_venues_url) }
       format.xml  { head :ok }
     end
   end
