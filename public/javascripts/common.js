@@ -29,7 +29,7 @@ $(function(){
 
 	$("a.album_trig").hover(
 		 function(){
-			getIndex = $("a.album_trig").index(this);
+			getIndex = $(this).index(this);
 			popupalbum = $(".albumpop").eq(getIndex);
 			albumOffset = $(this).offset();
 			$(popupalbum).css("top", albumOffset.top - 163 + "px");
@@ -43,7 +43,7 @@ $(function(){
 		
 	$("a.discog_trig").hover(
 		 function(on){
-			getIndex = $("a.discog_trig").index(this);
+			getIndex = $(this).index(this);
 			popupdiscog = $(".discogpop").eq(getIndex);
 			discogOffset = $(this).offset();
 			$(popupdiscog).css("top", discogOffset.top - 149 + "px");
@@ -57,7 +57,7 @@ $(function(){
 	
 	$("a.venue_trig").hover(
 		 function(){
-			getIndex = $("a.venue_trig").index(this);
+			getIndex = $(this).index(this);
 			popupvenue = $(".venuepop").eq(getIndex);
 			venueOffset = $(this).offset();
 			$(popupvenue).css("top", venueOffset.top - 150 + "px");
@@ -70,7 +70,7 @@ $(function(){
 	
 	$("a.buytickets_trig").hover(
 		 function(){
-			getIndex = $("a.buytickets_trig").index(this);
+			getIndex = $(this).index(this);
 			popupbuytickets = $(".buyticketspop").eq(getIndex);
 			buyticketsOffset = $(this).offset();
 			$(popupbuytickets).css("top", buyticketsOffset.top - 159 + "px");
