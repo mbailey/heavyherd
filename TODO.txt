@@ -1,6 +1,5 @@
-Done: Where do we populate "Band Moles" -> edit gig
-
 + Must See / Must Hear icons required (BS)
++ is font correct for artist names?
 
 
 + CSS required on Artists [Mike]
@@ -12,6 +11,9 @@ Done: Where do we populate "Band Moles" -> edit gig
 + put dateDOW instead of GIGDATE
 + fix position of SOLD OUT
 + show standard album cover if artwork missing
++ logged in user clicks to say they're going
++ show alt/title tages for long artist names
+
 
 
 # Stage 2

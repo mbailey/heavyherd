@@ -72,7 +72,7 @@
 			</li>
 			<li class="date"> <img class="datetitle" src="/images/icon_gigdate.gif" alt="Gig Date" /><span class="datetext"><%= gig.date.strftime("%d.%m") %></span><span class="soldout"><%= image_tag "/images/icon_soldout.gif", :alt=>"Sold out" if gig.sold_out %></span></li>
 			<li class="albumart"> <a class="album_trig" href="#"><%= image_tag gig.artist.cover_image, :width => 44, :alt=>"Album cover" unless gig.artist.cover_image.blank?%></a></li>
-			<li class="title"><h3><%= link_to_unless current_user.nil?, h(truncate(gig.artist.name,20)), edit_admin_artist_url(gig.artist) %></h3> </li>
+			<li class="title"><h3><%= link_to_unless current_user.nil?, h(truncate(gig.artist.name,40)), edit_admin_artist_url(gig.artist) %></h3> </li>
 			<li class="discog"><% if ! gig.artist.discog_title.blank? %><a class="discog_trig" href="#"></a><% end %> </li>
 
 			<li class="rating"> <img src="/images/icon_stars.gif" alt="rating" /></li>
