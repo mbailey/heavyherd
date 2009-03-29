@@ -82,3 +82,22 @@ function prevTrack() {
 	return false;
 
 }
+
+var player = null;
+function playerReady(thePlayer) {
+  player = document.getElementById(thePlayer.id);
+  addListeners(); 
+}
+
+function stateTracker(obj) { 
+	// alert('the new mute state is: '+obj);
+	if (obj.newstate == 'COMPLETED') { nextTrack();}
+};
+
+function addListeners() {
+  if (player) { 
+	player.addModelListener("STATE","stateTracker");
+  } else {
+    setTimeout("addListeners()",100);
+  }
+}

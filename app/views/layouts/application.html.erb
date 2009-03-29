@@ -23,21 +23,27 @@
 <div id="page">
 
 	<div id="header">
-		<h1 id="header_title">Heavy Heard</h1>
-		<% if !current_user %>
+  		<h1 id="header_title">Heavy Heard</h1>		
+  	<% if !current_user %>
 			<%= link_to "", new_user_session_path, :class => 'login' %>
 		<% else %>
-			<%= link_to "", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?", :class => 'logout' %>
+			<%= link_to "", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?", :class => 'login' %>
 		<% end %>
 		<h2>who we're listening to. when they're touring.</h2>
-		<div id="header_nav">
-			<div id="nav_wrap">
-			<span><%= link_to_unless_current 'Gigs', gigs_url, :class=>"nav_gigs" %></span><span class="nav_spacer">/</span><span><%= link_to_unless_current 'Artists', artists_url, :class=>"nav_artists" %></span>
-			</div>
 
-			<span class="tagline">who we're listening to</span>
-		</div>
-	</div>
+
+
+  		<div id="header_nav">
+  			<div id="nav_wrap">
+  			<span><%= link_to_unless_current 'Gigs', gigs_url %></span>
+  			<span class="nav_spacer">/</span>
+  			<span><%= link_to_unless_current 'Artists', artists_url %></span>
+  			</div>
+  		</div>
+
+  	</div>
+  	
+  	
 	<!-- <% if !current_user %>
 	  <%= link_to "Register", new_account_path %> |
 	  <%= link_to "Log In", new_user_session_path %> |
@@ -48,7 +54,6 @@
 <p style="color: green"><%= flash[:notice] %></p>
 <%= navlinks if current_user %>
 <%= yield  %>
-<div id="footer"></div>
 </div>
 </body>
 </html>

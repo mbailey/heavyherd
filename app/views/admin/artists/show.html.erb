@@ -23,6 +23,11 @@
   <%=h @artist.tor %>
 </p>
 
+<p>
+  <b><%=h @artist.discog_title %></b>
+  <pre><%=h @artist.discog_detail %></pre>
+</p>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+
+<%= link_to 'Edit', edit_admin_artist_path(@artist) %> |
+<%= link_to 'Back', admin_artists_path %>

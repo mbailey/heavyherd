@@ -52,7 +52,7 @@ img
 #header
 {
 	width : auto;
-	height : 160px;
+	height : 180px;
 }
 
 /*
@@ -61,20 +61,20 @@ img
 ------------------------------
 */
 
-/*h1
+h1
 {
-	font-size : 80px;
+/*	font-size : 80px;
 	font-weight : normal;
 	color : #3dc0f0;
 	letter-spacing : -3px;
 	margin : 35px 0 0 50px;
 	padding : 0;
-	float : left;
-}*/
+	float : left;*/
+}
 
 h1#header_title
 {
-	/*	mike */	
+	# copied from above
 	font-size : 80px;
 	font-weight : normal;
 	color : #3dc0f0;
@@ -82,7 +82,7 @@ h1#header_title
 	margin : 35px 0 0 50px;
 	padding : 0;
 	float : left;
-	/* end mike */
+	
 	width : 376px;
 	height : 80px;
 	background : url(/images/header_title.gif) no-repeat;
@@ -91,12 +91,13 @@ h1#header_title
 	overflow : hidden;
 }
 
-a.login, a.logout
+a.login
 {
 	width : 9px;
 	height : 10px;
 	display : block;
-	float : left;
+/*	background : url(/images/icon_login.gif) no-repeat;
+*/	float : left;
 	position : relative;
 	top : 47px;
 	margin : 0 2px 0 2px;
@@ -135,13 +136,12 @@ h2
 		{
 			color : #e94637;
 			float : left;
+			text-decoration : none;
 		}
-		
-		#nav_wrap a.nav_gigs
+		#nav_wrap a
 		{
 			color : #c9c9c9;
 			float : left;
-			text-decoration : none;
 		}
 		
 		#nav_wrap .nav_spacer
@@ -151,12 +151,7 @@ h2
 			margin : 0 3px 0 3px;
 		}
 		
-		#nav_wrap a.nav_artists
-		{
-			color : #c9c9c9;
-			float : left;
-			text-decoration : none;
-		}
+
 	
 	#header_nav .tagline
 	{
@@ -164,6 +159,12 @@ h2
 		font-weight : normal;
 		color : #949494;
 		letter-spacing : -0.04em;
+	}
+	
+	#header_nav .tagline a
+	{
+		color : #949494;
+		text-decoration : underline;
 	}
 
 /*
@@ -191,6 +192,7 @@ h2
 		margin : 0;
 		padding : 0;
 		width : 960px;
+		height : auto;
 		position : relative;
 	}
 	
@@ -265,8 +267,8 @@ h2
 			
 			li.date .soldout
 			{
-/*				margin-top : -8px;
-*/				display : block;
+				margin-top : -8px;
+				display : block;
 			}
 		
 		#giglist .list_row li.albumart
@@ -294,6 +296,12 @@ h2
 				margin : 0;
 				padding-top : 14px;
 			}
+			
+				li.title h3 a
+				{
+					color : #000;
+					text-decoration : none;
+				}
 		
 		#giglist .list_row li.discog
 		{
@@ -329,7 +337,7 @@ h2
 		{
 			width : 114px;
 			background : url(/images/row_spacer.gif) top right no-repeat;
-			text-align : center;
+			text-align : left;
 			padding-top : 17px;
 		}
 		
@@ -340,6 +348,7 @@ h2
 				text-decoration : underline;
 				letter-spacing : -0.06em;
 				color : #949494;
+				margin-left : 10px
 			}
 		
 		#giglist .list_row li.view_detail
@@ -358,7 +367,6 @@ h2
 				letter-spacing : -0.06em;
 				color : #00aeef;
 				padding-left : 12px;
-				
 			}
 			
 			li.view_detail a.open
@@ -372,12 +380,6 @@ h2
 			}
 		
 		#giglist .list_row li.status
-		{
-			width : 35px;
-			text-align : center;
-			padding-top : 20px;
-		}
-		#giglist .list_row li.bt
 		{
 			width : 35px;
 			text-align : center;
@@ -467,7 +469,7 @@ h2
 					width : auto;
 					height : 25px;
 					background : url(/images/detail_spacer.gif) top left no-repeat;
-					padding : 0 10px 0 10px;
+					padding : 0;
 					font-size : 11px;
 					letter-spacing : -0.087em;
 					text-align : center;
@@ -476,17 +478,20 @@ h2
 				#giglist .detail_row ul.linklist li.bandsite
 				{
 					padding-top : 4px;
+					width : 109px;
 				}
 				
 				#giglist .detail_row ul.linklist li.ticketsandtube
 				{
 					padding-right : 0;
+					width : 114px;
 				}
 				
 					li.ticketsandtube  .ticketslink
 					{
 						float : left;
 						margin-top : 4px;
+						margin-left : 10px;
 					}
 					
 					li.ticketsandtube  .youtube
@@ -498,6 +503,7 @@ h2
 				{
 					padding-left : 18px;
 					padding-right : 8px;
+					width : 39px;
 				}
 				
 					li.count img
@@ -523,6 +529,7 @@ h2
 			
 			#giglist .detail_row ul.linklist li.postedby
 			{
+				width : 36px;
 				padding-top : 4px;
 				text-align : center;
 			}
@@ -530,6 +537,7 @@ h2
 				li.postedby span
 				{
 					font-size : 11px;
+					font-weight : bold;
 					color : #949494;
 					letter-spacing : 0;
 				}
@@ -573,7 +581,8 @@ h2
 
 .buyticketspop
 {
-	left : 676px;
+	left : 680px;
+	top : 155px;
 	display : none;
 }
 
@@ -633,3 +642,24 @@ h2
 		background : url(/images/popup_bot.gif) no-repeat;
 		float : left;
 	}
+
+/*
+------------------------------
+	Flash player styles
+------------------------------
+*/
+
+#player #footer_caption
+{
+	float : right;
+	margin-right : 90px;
+	padding-top : 7px;
+}
+
+#player #footer_caption span
+{
+	font-size : 14px;
+	font-weight : bold;
+	color : #fff;
+}
+

@@ -2,5 +2,5 @@
 
 <%= render :partial => 'form' %>
 
-<%= link_to 'Show', @artist %> |
-<%= link_to 'Back', artists_path %>
+<%= link_to 'Show', [:admin, @artist] %> |
+<%= link_to 'Back', admin_artists_path %>

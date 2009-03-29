@@ -1,11 +1,11 @@
 <p>
   <b>Venue:</b>
-  <%=h @gig.venue_id %>
+  <%= link_to h(@gig.venue.name), [:admin, @gig.venue] %>
 </p>
 
 <p>
   <b>Artist:</b>
-  <%=h @gig.artist_id %>
+  <%= link_to h(@gig.artist.name), [:admin, @gig.artist] %>
 </p>
 
 <p>
@@ -19,6 +19,11 @@
 </p>
 
 <p>
+  <b>Moles:</b>
+  <%=h @gig.moles %>
+</p>
+
+<p>
   <b>Door open:</b>
   <%=h @gig.door_open %>
 </p>
@@ -28,6 +33,11 @@
   <%=h @gig.sold_out %>
 </p>
 
+<p>
+  <b>Ticket details:</b>
+  <pre><%=h @gig.tickets %></pre>
+</p>
 
-<%= link_to 'Edit', edit_gig_path(@gig) %> |
-<%= link_to 'Back', gigs_path %>
+
+<%= link_to 'Edit', edit_admin_gig_path(@gig) %> |
+<%= link_to 'Back', admin_gigs_path %>

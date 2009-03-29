@@ -1,3 +1,18 @@
+/*ul#giglist li.giglist_row {display:inline-block !important;}
+ul#giglist li.giglist_row {display:block !important;}*/
+
+body ul#giglist li.giglist_row
+{
+	height : 1%;
+	margin-bottom : -3px;
+	border-bottom : 1px solid #fff;
+}
+
+#giglist .list_row li.play a
+{
+	margin-left : 0;
+}
+
 #giglist .list_row li.date .soldout
 {
 	margin-top : 0px;

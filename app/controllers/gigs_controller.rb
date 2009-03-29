@@ -1,5 +1,10 @@
 class GigsController < ApplicationController
     
+  def redirect
+    headers["Status"] = "301 Moved Permanently"  
+    redirect_to gigs_url
+  end
+  
   # GET /gigs
   # GET /gigs.xml
   def index

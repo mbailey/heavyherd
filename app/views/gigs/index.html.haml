@@ -3,11 +3,9 @@
     - @track_num = 0
     = render :partial => 'gig', :collection => @gigs
 
-#player
-  %a#playerPrev{:onclick=>"prevTrack();return false;", :href=>"#"}
-    Prev
-    %span
-  = player({:file => 'http://fakepennycomics.com/blog/SOSB_HalfAsleep.mp3', :lightcolor => "84C441", :skin => :stylish_slim}, {:width => 257, :height => 32, :player_id => 'herd_player'})
-  %a#playerNext{:onclick=>"nextTrack();return false;", :href=>"#"} 
-    Next
-    %span
+%br
+%br
+    
+= render :partial => 'player'
+
+

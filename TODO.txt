@@ -1,32 +1,25 @@
-* make player work
-- progress to next song
-- display tack name and artist
-- display links to buy
+Done: Where do we populate "Band Moles" -> edit gig
 
-* update gigs/artist words based on which link chosen
-* need to add margin to main 
-* highlight play button on hover
-* add roles: admin, editor
-* switch authlogic to email?
-* link to artists admin page only if admin
-* show standard album cover if artwork missing
-* put dateDOW instead of GIGDATE
++ Must See / Must Hear icons required (BS)
 
-* create admin/ dir
 
-* list gigs
-- show edit links if admin
++ CSS required on Artists [Mike]
++ When user is in Artists mode CSS hides: Date / Venue / Tickets [Mike]
++ Add margin to bottom of page so we can see bottom row when expanded. [Mike]
++ List artist and track playing (in player footer) with jump to function. [Mike]
++ Highlight play button on hover
++ Add roles (admin, editor, herd) and show download link to herd
++ put dateDOW instead of GIGDATE
++ fix position of SOLD OUT
++ show standard album cover if artwork missing
 
-* autograb album covers
 
-* adding gig should allow pulldown
+# Stage 2
++ display links to buy music
++ autograb album covers
++ adding gig should allow pulldown
++ install geokit for addresses
 
-* install geokit for addresses
-
-* make price $x.xx
-
-* restrict all pages to admin
-write password plugin (fun4paws)
 
 * venue pages
 - map
@@ -35,14 +28,12 @@ write password plugin (fun4paws)
 
 * create venues bootstrap
 
-
-
 * Add tracks model
-belongs_to :artist
-has_and_belongs_to_many :albums
-- name
-- album
-- artist
+  belongs_to :artist
+  has_and_belongs_to_many :albums
+  - name
+  - album
+  - artist
 
 * Add album model
 - has_many :tracks

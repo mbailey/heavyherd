@@ -29,13 +29,13 @@ $(function(){
 
 	$("a.album_trig").hover(
 		 function(){
-			getIndex = $(this).index(this);
-			popupalbum = $(".albumpop").eq(getIndex);
-			albumOffset = $(this).offset();
-			$(popupalbum).css("top", albumOffset.top - 163 + "px");
+			var albumIndex = $("a.album_trig").index(this);
+			var popupalbum = $(".albumpop").eq(albumIndex);
 			$(popupalbum).fadeIn();
 		},
 		function(){
+			var albumIndex = $("a.album_trig").index(this);
+			var popupalbum = $(".albumpop").eq(albumIndex)
 			$(popupalbum).fadeOut();
 		}
 	);
@@ -43,13 +43,14 @@ $(function(){
 		
 	$("a.discog_trig").hover(
 		 function(on){
-			getIndex = $(this).index(this);
-			popupdiscog = $(".discogpop").eq(getIndex);
-			discogOffset = $(this).offset();
-			$(popupdiscog).css("top", discogOffset.top - 149 + "px");
+			var discogIndex = $("a.discog_trig").index(this);
+			var popupdiscog = $(".discogpop").eq(discogIndex);
+
 			$(popupdiscog).fadeIn();
 		},
 		function(){
+			var discogIndex = $("a.discog_trig").index(this);
+			var popupdiscog = $(".discogpop").eq(discogIndex);
 			$(popupdiscog).fadeOut();
 		}
 	);
@@ -57,31 +58,32 @@ $(function(){
 	
 	$("a.venue_trig").hover(
 		 function(){
-			getIndex = $(this).index(this);
-			popupvenue = $(".venuepop").eq(getIndex);
-			venueOffset = $(this).offset();
-			$(popupvenue).css("top", venueOffset.top - 150 + "px");
+			var venueIndex = $("a.venue_trig").index(this);
+			var popupvenue = $(".venuepop").eq(venueIndex);
+
 			$(popupvenue).fadeIn("slow");
 		},
 		function(){
+			var venueIndex = $("a.venue_trig").index(this);
+			var popupvenue = $(".venuepop").eq(venueIndex);
 			$(popupvenue).fadeOut();
 		}
 	);
 	
 	$("a.buytickets_trig").hover(
 		 function(){
-			getIndex = $(this).index(this);
-			popupbuytickets = $(".buyticketspop").eq(getIndex);
-			buyticketsOffset = $(this).offset();
-			$(popupbuytickets).css("top", buyticketsOffset.top - 159 + "px");
+			var ticketIndex = $("a.buytickets_trig").index(this);
+			var popupbuytickets = $(".buyticketspop").eq(ticketIndex);
+
 			$(popupbuytickets).fadeIn("slow");
 		},
 		function(){
+			var ticketIndex = $("a.buytickets_trig").index(this);
+			var popupbuytickets = $(".buyticketspop").eq(ticketIndex);
 			$(popupbuytickets).fadeOut();
 		}
 	);
 
 });
-
 
 

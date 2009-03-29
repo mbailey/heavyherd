@@ -1,55 +1,63 @@
-.gig_row td {padding: 15px;}
-.gig_row a {text-decoration: none;}
-.gig_row .details {visibility: hidden;}
-.gig_row:hover .details {visibility: visible;}
-.gig_row .datename { font-size: 0.8em;}
-.gig_row .datenum { color: red; font-size: 1.1em;}
-.gig_row .artist {font-size: 2.5em;}
-.gig_row .venue {font-size: 1.2em;}
-.gig_row .cover {border: 1px solid black;}
-.artist { font-size: 2.5em;}
+/*.gig_row td {padding :  15px;}
+.gig_row a {text-decoration :  none;}
+.gig_row .details {visibility :  hidden;}
+.gig_row : hover .details {visibility :  visible;}
+.gig_row .datename { font-size :  0.8em;}
+.gig_row .datenum { color :  red; font-size :  1.1em;}
+.gig_row .artist {font-size :  2.5em;}
+.gig_row .venue {font-size :  1.2em;}
+.gig_row .cover {border :  1px solid black;}
+.artist { font-size :  2.5em;}*/
 
-#main_content {margin: 0 0 38px 0;}
+/*#main_content {margin :  0 0 38px 0;}*/
 
 
 div#player{
- position: absolute;
- bottom: 0;
- left: 0;
- width: 100%;
- background: #000000 url(/images/bg-player.png) repeat-x scroll 0 0;
- position: fixed;
+ position :  absolute;
+ bottom :  0;
+ left :  0;
+ width :  100%;
+ height : 32px;
+ background :  #000000 url(../images/bg-player.png) repeat-x;
+ position :  fixed;
 }
 
-#playerPrev, #playerNext {
-display:block;
-font-size:1px;
-height:32px;
-overflow:hidden;
-position:absolute;
-right:292px;
-top:0;
-width:33px;
+#flash_player_container
+{
+	float :  left;
 }
+
+#playerPrev, #playerNext 
+{
+display : block;
+font-size : 1px;
+height : 32px;
+overflow : hidden;
+position : relative;
+float :  left;
+width : 33px;
+text-indent : -5000px;
+}
+
 #playerNext {
-right:0;
-top:0;
+right : 0;
+top : 0;
 }
 #playerPrev span, #playerNext span {
-background:transparent url(/images/player-controls.png) repeat scroll 0 0;
-display:block;
-height:100%;
-left:0;
-position:absolute;
-top:0;
-width:100%;
+background : transparent url(../images/player-controls.png) repeat scroll 0 0;
+display : block;
+height : 100%;
+left : 0;
+position : relative;
+float :  left;
+width : 33px
 }
 #playerNext span {
-background:transparent url(/images/player-controls.png) repeat scroll 33px 0;
+background : transparent url(../images/player-controls.png) repeat scroll 33px 0;
 }
-#playerPrev:hover span {
-background:transparent url(/images/player-controls.png) repeat scroll 0 -32px;
+#playerPrev : hover span {
+background : transparent url(../images/player-controls.png) repeat scroll 0 -32px;
 }
-#playerNext:hover span {
-background:transparent url(/images/player-controls.png) repeat scroll 33px -32px;
+#playerNext : hover span {
+background : transparent url(../images/player-controls.png) repeat scroll 33px -32px;
 }

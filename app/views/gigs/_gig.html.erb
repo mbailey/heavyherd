@@ -12,25 +12,27 @@
 		<div class="popbot"></div>
 	</div>	
 	
+	<% if ! gig.artist.discog_title.blank? %>
 	<div class="popup_wrapper discogpop">
-
-		<div class="poptop"><h4>Title area</h4></div>
+		<div class="poptop"><h4><%= gig.artist.discog_title %></h4></div>
 		<div class="popmid">
 			<div class="popcontent">
-				<span>text area <br />text area <br />text area <br />text area <br /></span>
+				<span><%= gig.artist.discog_detail %></span>
 			</div>
 		</div>
 
 		<div class="popbot"></div>
 	</div>
+	<% end %>
+	
 	
 	<div class="popup_wrapper venuepop">
-		<div class="poptop"><h4>Title area</h4></div>
+		<div class="poptop"><h4><%= gig.venue.name %></h4></div>
 		<div class="popmid">
-			<div class="popcontent">
-				<span>text area <br />text area <br />text area <br />text area <br /></span>
-
-			</div>
+			<div class="popcontent"><span>
+			  Tickets: <strong><%= fmt_dollars(gig.price) %></strong><br/><br/>
+			  Doors Open: <strong><%= fmt_time(gig.door_open) %></strong><br/><br/>
+			  <%= fmt_address(gig.venue) %></span></div>
 		</div>
 		<div class="popbot"></div>
 	</div>
@@ -40,7 +42,7 @@
 		<div class="popmid">
 			<div class="popcontent">
 
-				<span>text area <br />text area <br />text area <br />text area <br /></span>
+				<span><%= gig.tickets %></span>
 			</div>
 		</div>
 		<div class="popbot"></div>
@@ -62,7 +64,6 @@
 		
 		<ul class="list_row">
 			<li class="play">
-				<%#= play_track(gig.artist.mp3) %> 
 				<% if ! gig.artist.mp3.blank? %>
 			 		<%= link_to('', "#", :onclick => "setCurrentTrack(#{@track_num}); return false;", :id => "track_#{@track_num}", :class => 'notplaying') %>
 					<% @track_num+=1 %>
@@ -72,12 +73,12 @@
 			<li class="date"> <img class="datetitle" src="/images/icon_gigdate.gif" alt="Gig Date" /><span class="datetext"><%= gig.date.strftime("%d.%m") %></span><span class="soldout"><%= image_tag "/images/icon_soldout.gif", :alt=>"Sold out" if gig.sold_out %></span></li>
 			<li class="albumart"> <a class="album_trig" href="#"><%= image_tag gig.artist.cover_image, :width => 44, :alt=>"Album cover" unless gig.artist.cover_image.blank?%></a></li>
 			<li class="title"><h3><%= link_to_unless current_user.nil?, h(truncate(gig.artist.name,20)), edit_admin_artist_url(gig.artist) %></h3> </li>
-			<li class="discog"><a class="discog_trig" href="#"></a> </li>
+			<li class="discog"><% if ! gig.artist.discog_title.blank? %><a class="discog_trig" href="#"></a><% end %> </li>
 
 			<li class="rating"> <img src="/images/icon_stars.gif" alt="rating" /></li>
 			<li class="venue"><a class="venue_trig" href="#">Corner Hotel</a> </li>
 			<li class="view_detail"><a class="detail_toggle open" href="javascript:void(0);"><span>Display detail</span></a> </li>
-			<li class="status"><img src="/images/icon_new.gif" alt="New" /> </li>
+			<li class="status"><%= image_tag "/images/icon_new.gif", :alt=>"New", :title=>"Added #{days_since(gig.created_at)}" if gig.created_at > 3.days.ago %></li>
 		</ul>
 	</div>
 	
@@ -88,7 +89,6 @@
 				<li><%= gig.artist.track %></li>
 				<li class="title">Album</li>
 				<li><%= gig.artist.album %></li>
-
 			</ul>
 		</div>
 		<div class="summary">
@@ -99,7 +99,7 @@
 				<li class="bandsite"><%= link_to 'Visit Band Website', gig.artist.web, :target => 'new' unless gig.artist.web.blank? %></li>
 
 				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><%= link_to image_tag("/images/icon_youtube.gif"), gig.artist.youtube, :class=>"youtubelink", :target => 'new' unless gig.artist.youtube.blank? %></span></li>
-				<li class="count"><img src="/images/icon_count.gif" /><span class="number">6</span></li>
+				<li class="count"><%= image_tag "/images/icon_count.gif", :alt => "#{gig.moles} herd members attending", :title => "#{gig.moles} herd members attending" if gig.moles > 0 %><span class="number"><%= gig.moles if gig.moles > 0%></span></li>
 				<li class="torrent"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? %></li>
 				<li class="postedby"><span></span></li>
 			</ul>	

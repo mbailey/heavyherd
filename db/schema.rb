@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090322101146) do
+ActiveRecord::Schema.define(:version => 20090329114809) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_1"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20090322101146) do
     t.string   "album"
     t.string   "description"
     t.string   "youtube"
+    t.string   "discog_title"
+    t.string   "discog_detail"
   end
 
   create_table "gigs", :force => true do |t|
@@ -47,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20090322101146) do
     t.boolean  "sold_out"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "moles",      :default => 0
+    t.string   "tickets"
   end
 
   create_table "offerings", :force => true do |t|
@@ -88,6 +92,13 @@ ActiveRecord::Schema.define(:version => 20090322101146) do
     t.string   "web"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postcode"
+    t.float    "lat"
+    t.float    "lng"
   end
 
 end
