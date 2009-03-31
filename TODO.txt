@@ -2,6 +2,7 @@
 + is font correct for artist names?
 
 
++ validate mp3 is the url to an mp3
 + CSS required on Artists [Mike]
 + When user is in Artists mode CSS hides: Date / Venue / Tickets [Mike]
 + Add margin to bottom of page so we can see bottom row when expanded. [Mike]
