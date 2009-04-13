@@ -22,15 +22,14 @@
 <div id="page">
 
 	<div id="header">
-  		<h1 id="header_title">Heavy Heard</h1>		
+	    <div id="player_button" style="float: left;"><span></span></div>
+  		<div id="header_title">Heavy Heard</div>		
   	<% if !current_user %>
 			<%= link_to "", new_user_session_path, :class => 'login' %>
 		<% else %>
 			<%= link_to "", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?", :class => 'login' %>
 		<% end %>
-		<h2>who we're listening to. when they're touring.</h2>
-
-
+		<h2 class="heading">who we're listening to. when they're touring.</h2>
 
   		<div id="header_nav">
   			<div id="nav_wrap">
@@ -39,9 +38,7 @@
   			<span><%= link_to_unless_current 'Artists', artists_url %></span>
   			</div>
   		</div>
-
   	</div>
-  	
   	
 	<!-- <% if !current_user %>
 	  <%= link_to "Register", new_account_path %> |

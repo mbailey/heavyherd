@@ -39,6 +39,7 @@ a:visited { color: #666; }
   margin: -7px;
   background-color: #c00;
   color: #fff;
+  width: 400px;
 }
 
 #errorExplanation p {

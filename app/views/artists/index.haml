@@ -1,0 +1,8 @@
+#list_wrap
+  %ul#giglist
+    - @track_num = 0
+    = render :partial => 'artist', :collection => @artists
+    
+= render :partial => 'shared/player'
+
+

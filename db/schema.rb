@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090329114809) do
+ActiveRecord::Schema.define(:version => 20090413100917) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_1"
@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(:version => 20090329114809) do
     t.string   "cover_image"
     t.string   "track"
     t.string   "album"
-    t.string   "description"
+    t.text     "description"
     t.string   "youtube"
     t.string   "discog_title"
-    t.string   "discog_detail"
+    t.text     "discog_detail"
+    t.string   "myspace"
+    t.boolean  "recommended"
   end
 
   create_table "gigs", :force => true do |t|
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20090329114809) do
     t.string   "postcode"
     t.float    "lat"
     t.float    "lng"
+    t.string   "phone"
   end
 
 end

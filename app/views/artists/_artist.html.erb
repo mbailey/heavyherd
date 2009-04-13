@@ -1,0 +1,89 @@
+<!-- start : gig list loop -->
+<li class="giglist_row clearfix"> 
+	<!-- start : pop up boxes -->
+	<div class="popup_wrapper albumpop">
+
+		<div class="poptop"><h4></h4></div>
+		<div class="popmid">
+			<div class="popalbum">
+				<%= image_tag artist.cover_image, :width => 138 %>
+			</div>
+		</div>
+		<div class="popbot"></div>
+	</div>	
+	
+	<% if ! artist.discog_title.blank? %>
+	<div class="popup_wrapper discogpop">
+		<div class="poptop"><h4><%= artist.discog_title %></h4></div>
+		<div class="popmid">
+			<div class="popcontent">
+				<span><%= artist.discog_detail %></span>
+			</div>
+		</div>
+
+		<div class="popbot"></div>
+	</div>
+	<% end %>
+	<!-- end : pop up boxes -->
+	<div class="bg_row">
+
+		<% if ! artist.mp3.blank? %>
+			<script type="text/javascript">
+				trackList[<%= @track_num %>] = ({
+					url:'<%= artist.mp3 %>',
+					artist:'<%= artist.name %>',
+					song:'<%= artist.track %>',
+					amazon:'',
+					itunes:''
+				});
+			</script>
+		<% end %>
+		
+		<ul class="list_row">
+			<li class="play">
+				<% if ! artist.mp3.blank? %>
+			 		<%= link_to('', "#", :onclick => "setCurrentTrack(#{@track_num}); return false;", :id => "track_#{@track_num}", :class => 'notplaying') %>
+					<% @track_num+=1 %>
+			        
+			    <% end %>
+			</li>
+			<li class="date"></li>
+			<li class="albumart"> <a class="album_trig" href="#"><%= image_tag artist.cover_image, :width => 44, :alt=>"Album cover" unless artist.cover_image.blank?%></a></li>
+			<li class="title"><h3><%= link_to_unless current_user.nil?, h(truncate(artist.name,40)), edit_admin_artist_url(artist) %></h3> </li>
+			<li class="discog"><% if ! artist.discog_title.blank? %><a class="discog_trig" href="#"></a><% end %> </li>
+
+			<li class="rating"><%= image_tag "/images/icon_stars.gif", :alt=>"recommended" if artist.recommended %></li>
+			<li class="venue"></li>
+			<li class="view_detail"><a class="detail_toggle open" href="javascript:void(0);"><span>Display detail</span></a> </li>
+			<li class="status"><%= image_tag "/images/icon_new.gif", :alt=>"New", :title=>"Added #{days_since(artist.created_at)}" if artist.created_at > 3.days.ago %></li>
+		</ul>
+	</div>
+	
+	<div class="detail_row">
+		<div class="info">
+			<ul class="infolist">
+				<li class="title">Favourite Track</li>
+				<li><%= artist.track %></li>
+				<li class="title">Album</li>
+				<li><%= artist.album %></li>
+			</ul>
+		</div>
+		<div class="summary">
+			<p><%= artist.description %></p>
+		</div>
+		<div class="linklist_wrapper">
+			<ul class="linklist">
+				<li class="bandsite"><%= link_to 'Visit Artist Website', artist.web, :target => 'new' unless artist.web.blank? %></li>
+
+				<li class="ticketsandtube"><span class="youtube"><%= link_to image_tag("/images/icon_youtube.gif"), artist.youtube, :class=>"youtubelink", :target => 'new' unless artist.youtube.blank? %></span></li>
+				<li class="count">
+				  
+				</li>
+				<li class="torrent"><%= link_to image_tag('/images/down.gif', :border => 0), artist.tor unless artist.tor.blank? or ! current_user %></li>
+				<li class="postedby"><span></span></li>
+			</ul>	
+		</div>
+	</div>
+</li>
+
+<!-- end : gig list loop -->

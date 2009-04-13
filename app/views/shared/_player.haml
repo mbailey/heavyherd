@@ -1,0 +1,16 @@
+#player
+  %a#playerPrev{:href=>'#', :onclick=>'prevTrack();return false;'}
+    %span
+  #flash_player_container
+    = player({:file => '', :lightcolor => "84C441", :skin => :stylish_slim}, {:width => 257, :height => 32, :player_id => 'herd_player'})
+
+  %a#playerNext{:onclick=>'nextTrack();return false;'}
+    %span
+  #currently_playing 
+    %span.artist
+    %span.track
+    
+  #footer_caption
+    %span Sharing new music and who's touring.
+
+#footer

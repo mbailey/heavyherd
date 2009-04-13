@@ -72,14 +72,14 @@ h1
 	float : left;*/
 }
 
-h1#header_title
+#header_title
 {
 	# copied from above
 	font-size : 80px;
 	font-weight : normal;
 	color : #3dc0f0;
 	letter-spacing : -3px;
-	margin : 35px 0 0 50px;
+	margin : 35px 0 0 20px;
 	padding : 0;
 	float : left;
 	
@@ -106,7 +106,7 @@ a.login
 a.login:hover {background : url(/images/icon_login.gif) no-repeat;}
 a.logout:hover {background : url(/images/icon_logout.gif) no-repeat;}
 
-h2
+h2.heading
 {
 	font-size : 18px;
 	font-weight : normal;
@@ -663,3 +663,80 @@ h2
 	color : #fff;
 }
 
+#player #currently_playing
+{
+	float : left;
+	margin-left : 20px;
+	padding-top : 7px;
+}
+
+#player #currently_playing span
+{
+	font-size : 14px;
+	font-weight : bold;
+	color : #fff;
+}
+
+/* Rails Errors */
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+#player_button span {
+background:transparent url(/images/button-play.png) repeat scroll 0 0;
+display:block;
+padding : 0;
+float : left;
+
+height : 80px;
+margin-top : 60px;
+/*position:absolute;
+*/
+width: 49px;
+height: 49px;
+}
+#player_button:hover {
+background:transparent none repeat scroll 0 0;
+border:0 none;
+}
+#player_button:hover span {
+background-position:0 -48px;
+}
+#player_button span.pause {
+background-position:48px 0;
+}
+#player_button:hover span.pause {
+background-position:48px -48px;
+}

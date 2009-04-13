@@ -76,7 +76,7 @@
 			<li class="discog"><% if ! gig.artist.discog_title.blank? %><a class="discog_trig" href="#"></a><% end %> </li>
 
 			<li class="rating"> <img src="/images/icon_stars.gif" alt="rating" /></li>
-			<li class="venue"><a class="venue_trig" href="#">Corner Hotel</a> </li>
+			<li class="venue"><a class="venue_trig" href="#">gig.venue_name</a> </li>
 			<li class="view_detail"><a class="detail_toggle open" href="javascript:void(0);"><span>Display detail</span></a> </li>
 			<li class="status"><%= image_tag "/images/icon_new.gif", :alt=>"New", :title=>"Added #{days_since(gig.created_at)}" if gig.created_at > 3.days.ago %></li>
 		</ul>
