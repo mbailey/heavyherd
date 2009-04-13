@@ -1,4 +1,4 @@
-class Admin::ArtistsController < ApplicationController
+class Admin::ArtistsController < Admin::BaseController
   # GET /artists
   # GET /artists.xml
   def index

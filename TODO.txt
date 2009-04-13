@@ -1,19 +1,35 @@
+? What do we call America? U.S. or U.S.A.?
+
+# Brad
 + Must See / Must Hear icons required (BS)
 + is font correct for artist names?
 
-
-+ validate mp3 is the url to an mp3
+# Mike
++ hide rating?
++ Add margin to bottom of page so we can see bottom row when expanded. [Mike]
++ Don't play track twice on one page
++ fix position of SOLD OUT
 + CSS required on Artists [Mike]
 + When user is in Artists mode CSS hides: Date / Venue / Tickets [Mike]
-+ Add margin to bottom of page so we can see bottom row when expanded. [Mike]
-+ List artist and track playing (in player footer) with jump to function. [Mike]
 + Highlight play button on hover
++ general play button -> start on first track, pause
++ show alt/title tags for long artist names
+
+
+# Done
+Validate mp3 is the url to an mp3
+Display Flash Errors
++ show BT link
++ List artist and track playing (in player footer) with jump to function. [Mike]
+
+
+
++ option to omit doors opening times
+
 + Add roles (admin, editor, herd) and show download link to herd
 + put dateDOW instead of GIGDATE
-+ fix position of SOLD OUT
 + show standard album cover if artwork missing
 + logged in user clicks to say they're going
-+ show alt/title tages for long artist names
 
 
 

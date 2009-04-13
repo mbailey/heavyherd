@@ -1,4 +1,4 @@
-class Admin::VenuesController < ApplicationController
+class Admin::VenuesController < Admin::BaseController
   # GET /venues
   # GET /venues.xml
   def index

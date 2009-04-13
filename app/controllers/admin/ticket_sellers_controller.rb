@@ -1,4 +1,4 @@
-class Admin::TicketSellersController < ApplicationController
+class Admin::TicketSellersController < Admin::BaseController
   # GET /ticket_sellers
   # GET /ticket_sellers.xml
   def index
