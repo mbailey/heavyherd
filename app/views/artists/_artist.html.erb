@@ -3,7 +3,7 @@
 	<!-- start : pop up boxes -->
 	<div class="popup_wrapper albumpop">
 
-		<div class="poptop"><h4></h4></div>
+		<div class="poptop"><h4><%= artist.album %></h4></div>
 		<div class="popmid">
 			<div class="popalbum">
 				<%= image_tag artist.cover_image, :width => 138 %>
@@ -14,7 +14,7 @@
 	
 	<% if ! artist.discog_title.blank? %>
 	<div class="popup_wrapper discogpop">
-		<div class="poptop"><h4><%= artist.discog_title %></h4></div>
+		<div class="poptop"><h4><%= artist.discog_title.blank? ? artist.album : artist.discog_title %></h4></div>
 		<div class="popmid">
 			<div class="popcontent">
 				<span><%= artist.discog_detail %></span>

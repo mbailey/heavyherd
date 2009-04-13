@@ -3,7 +3,7 @@
 	<!-- start : pop up boxes -->
 	<div class="popup_wrapper albumpop">
 
-		<div class="poptop"><h4></h4></div>
+		<div class="poptop"><h4><%= gig.artist.album %></h4></div>
 		<div class="popmid">
 			<div class="popalbum">
 				<%= image_tag gig.artist.cover_image, :width => 138 %>
@@ -31,7 +31,7 @@
 		<div class="popmid">
 			<div class="popcontent"><span>
 			  Tickets: <strong><%= fmt_dollars(gig.price) %></strong><br/><br/>
-			  Doors Open: <strong><%= fmt_time(gig.door_open) %></strong><br/><br/>
+			  Doors Open: <strong><%= fmt_time(gig.door_open)%></strong><br/><br/>
 			  <%= fmt_address(gig.venue) %></span></div>
 		</div>
 		<div class="popbot"></div>
@@ -76,7 +76,7 @@
 			<li class="discog"><% if ! gig.artist.discog_title.blank? %><a class="discog_trig" href="#"></a><% end %> </li>
 
 			<li class="rating"> <img src="/images/icon_stars.gif" alt="rating" /></li>
-			<li class="venue"><a class="venue_trig" href="#">gig.venue_name</a> </li>
+			<li class="venue"><a class="venue_trig" href="#"><%= gig.venue_name %></a> </li>
 			<li class="view_detail"><a class="detail_toggle open" href="javascript:void(0);"><span>Display detail</span></a> </li>
 			<li class="status"><%= image_tag "/images/icon_new.gif", :alt=>"New", :title=>"Added #{days_since(gig.created_at)}" if gig.created_at > 3.days.ago %></li>
 		</ul>

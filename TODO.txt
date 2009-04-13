@@ -3,8 +3,10 @@
 # Brad
 + Must See / Must Hear icons required (BS)
 + is font correct for artist names?
++ we need a hover version for the play icon next to each track.
 
 # Mike
++ Doors open - hide unless set, default not set
 + hide rating?
 + Add margin to bottom of page so we can see bottom row when expanded. [Mike]
 + Don't play track twice on one page
