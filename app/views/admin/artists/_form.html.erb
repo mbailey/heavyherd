@@ -1,3 +1,5 @@
+<%= error_messages_for :artist %>
+
 <% form_for([:admin, @artist]) do |f| %>
 
   <p>
@@ -23,6 +25,10 @@
   <p>
     <%= f.label :web %><br />
     <%= f.text_field :web %>
+  </p>
+  <p>
+    <%= f.label :myspace %><br />
+    <%= f.text_field :myspace %>
   </p>
   <p>
     <%= f.label :youtube %><br />
