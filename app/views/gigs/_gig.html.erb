@@ -100,7 +100,7 @@
 
 				<li class="ticketsandtube"><span class="ticketslink"><a class="buytickets_trig"href="#">Buy Tickets</a></span><span class="youtube"><%= link_to image_tag("/images/icon_youtube.gif"), gig.artist.youtube, :class=>"youtubelink", :target => 'new' unless gig.artist.youtube.blank? %></span></li>
 				<li class="count"><%= image_tag "/images/icon_count.gif", :alt => "#{gig.moles} herd members attending", :title => "#{gig.moles} herd members attending" if gig.moles > 0 %><span class="number"><%= gig.moles if gig.moles > 0%></span></li>
-				<li class="torrent"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? %></li>
+				<li class="torrent"><%= link_to image_tag('/images/down.gif', :border => 0), gig.artist.tor unless gig.artist.tor.blank? or ! current_user %></li>
 				<li class="postedby"><span></span></li>
 			</ul>	
 		</div>
