@@ -24,9 +24,11 @@ test:
   timeout: 5000
 
 production:
-    adapter: mysql
-    encoding: utf8
-    database: heavyheard_production
-    pool: 5
-    username: root
-    password: 
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: hh_production
+  pool: 5
+  username: hh
+  password: g$er%dgGMs4
+  host: db.failmode.com
