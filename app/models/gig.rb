@@ -1,5 +1,5 @@
 class Gig < ActiveRecord::Base
-  belongs_to :artist, :dependent => :destroy
+  belongs_to :artist
   belongs_to :venue
   
   default_scope :order => 'date'
